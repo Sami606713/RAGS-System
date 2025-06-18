@@ -2,7 +2,7 @@ from agent.agent import RunAgent
 
 if __name__ == "__main__":
     query = """
-Compare the N₂O emission factors between Jet Fuel Aircraft and Aviation Gasoline Aircraft from Table 5. Which aircraft type produces higher N₂O emissions per gallon of fuel?
+Explain how the crystalline structure of cellulose impacts its enzymatic hydrolysis. What methods are used to overcome this challenge?
 """
     response = RunAgent(query=query)
     print(">> Response: ",response)

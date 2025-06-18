@@ -10,22 +10,22 @@ import os
 load_dotenv()
 
 # Get credentials from environment
-URI = os.getenv("ZILLOW_URI")
-TOKEN = os.getenv("ZILLOW_PASSWORD")  
+# URI = os.getenv("ZILLOW_URI")
+# TOKEN = os.getenv("ZILLOW_PASSWORD")  
 
-# Initialize Milvus client
-client = MilvusClient(
-    uri=URI,
-    token=f"db_94eed7ebf0f2204:{TOKEN}"
-)
+# # Initialize Milvus client
+# client = MilvusClient(
+#     uri=URI,
+#     token=f"db_94eed7ebf0f2204:{TOKEN}"
+# )
 
-if client.has_collection(collection_name="Rags"):
-    print(">> Collection Already Existis")
-else:
-    client.create_collection(
-        collection_name="Rags",
-        dimension=1536,  # OpenAIEmbeddings uses 1536 dimensions
-    )
+# if client.has_collection(collection_name="Rags"):
+#     print(">> Collection Already Existis")
+# else:
+#     client.create_collection(
+#         collection_name="Rags",
+#         dimension=1536,  # OpenAIEmbeddings uses 1536 dimensions
+#     )
 
 embeddings = OpenAIEmbeddings()
 
