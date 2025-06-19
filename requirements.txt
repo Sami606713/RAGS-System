@@ -8,8 +8,6 @@ langchain-community
 langchain-openai 
 langchain-groq
 python_dotenv
-pymilvus[model]
-pymilvus
 transformers
 torch
 poppler-utils 
@@ -17,7 +15,6 @@ tesseract
 pytesseract
 python-magic
 langchain-groq
-langchain-milvus
 agno
 streamlit
 faiss-cpu
