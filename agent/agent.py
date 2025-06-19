@@ -4,6 +4,7 @@ from agno.models.groq import Groq
 from agno.tools.reasoning import ReasoningTools
 from agno.tools.thinking import ThinkingTools
 from vectorStore.vectorStore import GetContext
+from agno.models.openai import OpenAIChat
 
 
 def RunAgent(query):
@@ -44,6 +45,7 @@ def RunAgent(query):
 
             show_tool_calls=True,
             markdown=True,
+            model=OpenAIChat(id="gpt-4o",api_key="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")
         )
 
 
