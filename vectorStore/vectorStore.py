@@ -9,74 +9,9 @@ import os
 
 load_dotenv()
 
-# Get credentials from environment
-# URI = os.getenv("ZILLOW_URI")
-# TOKEN = os.getenv("ZILLOW_PASSWORD")  
-
-# # Initialize Milvus client
-# client = MilvusClient(
-#     uri=URI,
-#     token=f"db_94eed7ebf0f2204:{TOKEN}"
-# )
-
-# if client.has_collection(collection_name="Rags"):
-#     print(">> Collection Already Existis")
-# else:
-#     client.create_collection(
-#         collection_name="Rags",
-#         dimension=1536,  # OpenAIEmbeddings uses 1536 dimensions
-#     )
-
-embeddings = OpenAIEmbeddings()
+embeddings = OpenAIEmbeddings(openai_api_key="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")
 
 from typing import List
-
-# def add_to_vector_store(docs_chunks: List[Document]):
-#     """
-#     Embeds document chunks using OpenAI and stores them in Milvus.
-#     Args:
-#         docs_chunks (List[Document]): List of LangChain Document objects.
-#     Returns:
-#         dict: Success message.
-#     """
-   
-
-#     vectors = []
-#     print(f">> Starting embedding for {len(docs_chunks)} documents...\n")
-#     for chunk in tqdm(docs_chunks, desc="🔍 Embedding Documents", unit="doc"):
-#         vector = embeddings.embed_documents([chunk.page_content])[0]
-#         vectors.append(vector)
-
-#     data = [
-#         {
-#             "id": i,
-#             "vector": vectors[i],
-#             "text": docs_chunks[i].page_content,
-#             "subject": "history"
-#         }
-#         for i in range(len(vectors))
-#     ]
-
-#     print(f"\n📦 Preparing to insert {len(data)} documents into Milvus...\n")
-
-#     for i in tqdm(range(1), desc="📤 Inserting into Milvus"):
-#         res = client.insert(collection_name="Rags", data=data)
-
-#     print("✅ Data insertion successful!")
-#     return {"status": "success"}
-
-
-# def GetContext(query:str):
-#     query_vectors = embeddings.embed_documents([query])
-
-#     res = client.search(
-#         collection_name="Rags",  # target collection
-#         data=query_vectors,  # query vectors
-#         limit=5,  # number of returned entities
-#         output_fields=["text", "subject"],  # specifies fields to be returned
-#     )
-#     print(">> Context: ",res)
-#     return res[0][0].entity
 
 # =============Fais Setup============#
 from typing import List
