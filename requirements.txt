@@ -15,7 +15,7 @@ torch
 poppler-utils 
 tesseract
 pytesseract
-python-magic-bin
+python-magic==0.4.27
 langchain-groq
 langchain-milvus
 agno
