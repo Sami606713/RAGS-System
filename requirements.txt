@@ -15,7 +15,7 @@ python_dotenv
 # poppler-utils 
 # tesseract
 # pytesseract
-# python-magic
+python-magic==0.4.27
 langchain-groq
 # langchain-milvus
 agno
