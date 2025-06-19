@@ -1,4 +1,4 @@
-# unstructured[all-docs] 
+unstructured[all-docs] 
 pillow 
 lxml 
 pillow
@@ -8,16 +8,15 @@ langchain-community
 langchain-openai 
 langchain-groq
 python_dotenv
-# pymilvus[model]
-# pymilvus
-# transformers
-# torch
-# poppler-utils 
-# tesseract
-# pytesseract
-python-magic==0.4.27
+pymilvus[model]
+pymilvus
+transformers
+torch
+poppler-utils 
+tesseract
+pytesseract
 langchain-groq
-# langchain-milvus
+langchain-milvus
 agno
 streamlit
 faiss-cpu
