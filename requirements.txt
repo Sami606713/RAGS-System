@@ -13,7 +13,6 @@ torch
 poppler-utils 
 tesseract
 pytesseract
-python-magic
 langchain-groq
 agno
 streamlit
