@@ -1,4 +1,4 @@
-unstructured[all-docs] 
+unstructured
 pillow 
 lxml 
 pillow
@@ -15,7 +15,7 @@ torch
 poppler-utils 
 tesseract
 pytesseract
-python-magic==0.4.27
+python-magic
 langchain-groq
 langchain-milvus
 agno
