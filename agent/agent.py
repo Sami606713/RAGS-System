@@ -5,8 +5,9 @@ from agno.tools.reasoning import ReasoningTools
 from agno.tools.thinking import ThinkingTools
 from vectorStore.vectorStore import GetContext
 from agno.models.openai import OpenAIChat
+from dotenv import load_dotenv
 
-
+load_dotenv()
 def RunAgent(query):
     """
     This agent can run hte query and return the response
@@ -45,7 +46,7 @@ def RunAgent(query):
 
             show_tool_calls=True,
             markdown=True,
-            model=OpenAIChat(id="gpt-4o",api_key="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")
+            model=OpenAIChat(id="gpt-4o")
         )
 
 

@@ -9,7 +9,7 @@ import os
 
 load_dotenv()
 
-embeddings = OpenAIEmbeddings(openai_api_key="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")
+embeddings = OpenAIEmbeddings()
 
 from typing import List
 
