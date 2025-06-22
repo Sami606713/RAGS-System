@@ -4,6 +4,7 @@ from agno.models.groq import Groq
 from agno.tools.reasoning import ReasoningTools
 from agno.tools.thinking import ThinkingTools
 from vectorStore.vectorStore import GetContext
+from utils.helper import Query_Optimizer
 from agno.models.openai import OpenAIChat
 from dotenv import load_dotenv
 
@@ -49,9 +50,11 @@ def RunAgent(query):
             model=OpenAIChat(id="gpt-4o")
         )
 
-
+        optimize_query = Query_Optimizer(query=query)
+        print("Optimized Query: ", optimize_query)
+    
         # Run Agent
-        response: RunResponse = agent.run(query, stream=False,structured_outputs=True)
+        response: RunResponse = agent.run(optimize_query, stream=False,structured_outputs=True)
         
         return response.content
     except Exception as e:

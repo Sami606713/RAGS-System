@@ -105,3 +105,43 @@ def Summarizer(prompt_template, data, config=True, set_messages=False):
     except Exception as e:
         return str(e)
 
+
+def Query_Optimizer(query):
+    """
+    This function optimizes a query by removing unnecessary words and phrases.
+
+    Args:
+        query (str): The input query to be optimized.
+
+    Returns:
+        str: The optimized query.
+    """
+    try:
+        # Define the prompt template for query optimization
+        prompt_template = """
+        You are an expert in query optimization. Your task is to remove unnecessary words and phrases from the given query.
+        The optimized query should be concise and focused on the main topic.
+
+        Original Query: {query}
+
+        Optimized Query:
+
+        Please provide the optimized query without any additional explanations or comments.
+        """
+
+        # Create a prompt using the template
+        prompt = ChatPromptTemplate.from_template(prompt_template)
+
+        # Use the ChatOpenAI model to generate the optimized query
+        model = ChatOpenAI(temperature=0.5, model="gpt-4o-mini")
+        optimize_chain = prompt | model | StrOutputParser()
+
+        # Run the optimization chain
+        return optimize_chain.invoke({"query": query})
+    except Exception as e:
+        return str(e)
+    
+if __name__ == "__main__":
+    query = "What are the main benefits of using wind propulsion technologies in maritime transport?"
+    optimized_query = Query_Optimizer(query)
+    print(f"Optimized Query: {optimized_query}")

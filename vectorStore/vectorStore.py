@@ -78,11 +78,9 @@ def GetContext(query:str):
 
     results = vector_store.similarity_search(
     query,
-    k=2,
-    # filter={"source": "tweet"},
+    k=5,
+    
     )
-    # for res in results:
-    #     print(f"* {res.page_content} [{res.metadata}]")
     
     return {
         "query": query,
