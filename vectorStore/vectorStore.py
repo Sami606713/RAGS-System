@@ -84,7 +84,15 @@ def GetContext(query:str):
     # for res in results:
     #     print(f"* {res.page_content} [{res.metadata}]")
     
-    return {"Context":results}
+    return {
+        "query": query,
+        "results": [
+            {
+                "page_content": res.page_content,
+                "metadata": res.metadata
+            } for res in results
+        ]
+    }
 
 
 
