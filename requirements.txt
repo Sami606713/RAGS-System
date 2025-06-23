@@ -19,6 +19,6 @@ pytesseract
 langchain-groq
 langchain-milvus
 agno
-opencv-python
+opencv-python-headless
 streamlit
 faiss-cpu
