@@ -19,43 +19,31 @@ def get_images_base64(chunks):
 
 def LoadAndExtractData(file_path):
     try:
-        # separate tables from texts
         tables = []
         texts = []
-
         print(">> Extracting Data")
         data = partition_pdf(
-        filename=file_path,
-        infer_table_structure=True,            # extract tables
-        # strategy="hi_res",                     # mandatory to infer tables
-
-        extract_image_block_types=["Image"],   # Add 'Tabl
-
-        extract_image_block_to_payload=True,   # if true, will extract base64 for API usage
-
-        chunking_strategy="by_title",          # or 'basic'
-        max_characters=10000,                  # defaults to 500
-        combine_text_under_n_chars=2000,       # defaults to 0
-        new_after_n_chars=6000,
-
-        # extract_images_in_pdf=True,          # deprecated
-    )
-        
-        # Extract the tables and text
+            filename=file_path,
+            infer_table_structure=True,
+            extract_image_block_types=["Image"],
+            extract_image_block_to_payload=True,
+            chunking_strategy="by_title",
+            max_characters=10000,
+            combine_text_under_n_chars=2000,
+            new_after_n_chars=6000,
+        )
         print(">> Extracting Text and tables...")
         for chunk in data:
             if "Table" in str(type(chunk)):
                 tables.append(chunk)
-
             if "CompositeElement" in str(type((chunk))):
                 texts.append(chunk)
-        print(">> Chunks are: ",data)
-        # extract the image
+        print(">> Chunks are: ", data)
         print(">> Extracting Images...")
         images = get_images_base64(data)
-        return  tables ,texts, images
+        return tables, texts, images
     except Exception as e:
-        print("Error is: ",str(e))
+        print("Error is: ", str(e))
         return [], [], str(e)
     
 
@@ -75,17 +63,13 @@ def Summarizer(prompt_template, data, config=True, set_messages=False):
         List[str]: List of summaries.
     """
     try:
-        # api_key = os.getenv()
         if set_messages:
             messages = [
                 (
                     "user",
                     [
                         {"type": "text", "text": prompt_template},
-                        {
-                            "type": "image_url",
-                            "image_url": {"url": "data:image/jpeg;base64,{image}"},
-                        },
+                        {"type": "image_url", "image_url": {"url": "data:image/jpeg;base64,{image}"}},
                     ],
                 )
             ]
@@ -117,30 +101,32 @@ def Query_Optimizer(query):
         str: The optimized query.
     """
     try:
-        # Define the prompt template for query optimization
         prompt_template = """
         You are an expert in query optimization. Your task is to remove unnecessary words and phrases from the given query.
         The optimized query should be concise and focused on the main topic.
-
         Original Query: {query}
-
         Optimized Query:
-
         Please provide the optimized query without any additional explanations or comments.
         """
-
-        # Create a prompt using the template
         prompt = ChatPromptTemplate.from_template(prompt_template)
-
-        # Use the ChatOpenAI model to generate the optimized query
         model = ChatOpenAI(temperature=0.5, model="gpt-4o-mini")
         optimize_chain = prompt | model | StrOutputParser()
-
-        # Run the optimization chain
         return optimize_chain.invoke({"query": query})
     except Exception as e:
         return str(e)
     
+
+
+from langchain_community.retrievers import BM25Retriever
+from typing import List
+from langchain.schema import Document
+
+def get_bm25_retriever(docs: List[Document], k: int = 5):
+    retriever = BM25Retriever.from_documents(docs)
+    retriever.k = k
+    return retriever
+
+
 if __name__ == "__main__":
     query = "What are the main benefits of using wind propulsion technologies in maritime transport?"
     optimized_query = Query_Optimizer(query)

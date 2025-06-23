@@ -1,8 +1,7 @@
 import os
 import shutil
-from utils.helper import LoadAndExtractData  # Uncomment if you want to process files
-from summerizer.imageSummerizer import Image_Summerizer
-from summerizer.textSummerizer import TextSummerizer
+from utils.helper import LoadAndExtractData
+from summerizer.summarizer import summarize_text, summarize_image
 from langchain_core.documents import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from vectorStore.vectorStore import add_to_vector_store
@@ -20,8 +19,8 @@ def main():
             processed_files = set()
 
         files = os.listdir(root_dir)
-        print(">> Files: ",files)
-        print(">> Process Files: ",processed_files)
+        print(">> Files: ", files)
+        print(">> Process Files: ", processed_files)
         print(">> Processing Files ")
         for file in files:
             file_path = os.path.join(root_dir, file)
@@ -33,51 +32,39 @@ def main():
                 tables, texts, images = LoadAndExtractData(file_path)
 
                 print(">> Generating Summaries ")
-                text_summary = TextSummerizer(data=texts)
-                tables_summary = TextSummerizer(data=tables)
-                images_summary = Image_Summerizer(data=images)
+                text_summary = summarize_text(data=texts)
+                tables_summary = summarize_text(data=tables)
+                images_summary = summarize_image(data=images)
 
-                print("Text Sumary: ",text_summary)
-                print("Table Summary: ",tables_summary)
-                print("Image Susmmary: ",images_summary)
+                print("Text Summary: ", text_summary)
+                print("Table Summary: ", tables_summary)
+                print("Image Summary: ", images_summary)
 
                 print(">> Summary Generated")
-
                 print(">> Combine Each and every thing into one document")
-                # Create Document objects for text chunks
-                text_docs = [Document(page_content=str(text), metadata={"type": "text", "summary": text_summary[i], "source":file_path,"name":file}) for i, text in enumerate(texts)]
 
-                # Create Document objects for table summaries (using the HTML representation)
-                table_docs = [Document(page_content=tables[i], metadata={"type": "table", "summary": tables_summary[i],"source":file_path,"name":file}) for i, table in enumerate(tables)]
+                text_docs = [Document(page_content=str(text), metadata={"type": "text", "summary": text_summary[i], "source": file_path, "name": file}) for i, text in enumerate(texts)]
+                table_docs = [Document(page_content=tables[i], metadata={"type": "table", "summary": tables_summary[i], "source": file_path, "name": file}) for i, table in enumerate(tables)]
+                image_docs = [Document(page_content=images[i], metadata={"type": "image", "summary": images_summary[i], "source": file_path, "name": file}) for i, image in enumerate(images)]
 
-                # Create Document objects for image summaries
-                image_docs = [Document(page_content=images[i], metadata={"type": "image", "summary": images_summary[i],"source":file_path,"name":file}) for i, image in enumerate(images)]
-
-                # Combine all document types into a single list
                 docs = text_docs + table_docs + image_docs
 
                 print(">> Splitting Documents")
                 document_splitter = RecursiveCharacterTextSplitter(
-                    chunk_size=1000,  # Example size, adjust based on your needs
-                    chunk_overlap=200,  # Example overlap, adjust based on your needs
+                    chunk_size=1000,
+                    chunk_overlap=200,
                     length_function=len,
                     is_separator_regex=False,
                 )
 
-                # Spli the documents
                 docs_chunks = document_splitter.split_documents(docs)
                 print(">> Splitting Done")
-                
                 add_to_vector_store(docs_chunks=docs_chunks)
 
-
-                # Append to log file
                 with open(processed_log_path, 'a') as f:
                     f.write(file + '\n')
 
                 print(f">> Marked {file} as processed")
-
-
             else:
                 print(f"!! Skipping already processed or unsupported file: {file}")
 

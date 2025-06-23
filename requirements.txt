@@ -1,5 +1,6 @@
 unstructured[all-docs] 
 pillow 
+rank_bm25
 lxml 
 pillow
 tiktoken

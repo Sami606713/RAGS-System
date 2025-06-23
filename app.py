@@ -1,5 +1,7 @@
 import streamlit as st
 from agent.agent import RunAgent
+from utils.helper import Query_Optimizer
+
 
 # Set Streamlit layout
 st.set_page_config(page_title="Document Chat App", layout="wide")
@@ -22,6 +24,8 @@ if user_input:
     with st.chat_message("You"):
         st.markdown(user_input)
 
+    # Optimize query
+    # user_input = Query_Optimizer(user_input)
     # Run agent
     response = RunAgent(query=user_input)
 
