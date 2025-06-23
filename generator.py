@@ -1,5 +1,8 @@
 from agent.agent import RunAgent
 from utils.helper import Query_Optimizer
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+
 
 # # Simple Questions
 # simple_questions = [
@@ -65,7 +68,9 @@ if __name__ == "__main__":
     # save_to_txt("wind-assist.txt", all_responses)
     # print("✅ All responses saved to responses.txt")
 
-    query =  "How does initial awareness percentage affect the shape of the awareness diffusion curve?"
+    query =  "Analyze the pace of infrastructure deployment at the Port of Rotterdam. What can other ports learn from this timeline?"
+    # query = Query_Optimizer(query)
+    # print(f"Optimized Query: {query}")
     response = RunAgent(query=query)
     print(f"Query: {query}")
     print(f"Response: {response}")

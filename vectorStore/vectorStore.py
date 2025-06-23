@@ -59,7 +59,7 @@ from utils.helper import get_bm25_retriever
 def get_hybrid_retriever(faiss_index_path: str, docs: List[Document], alpha: float = 0.5):
     faiss_vector_store = FAISS.load_local(faiss_index_path, embeddings, allow_dangerous_deserialization=True)
     faiss_retriever = faiss_vector_store.as_retriever(search_kwargs={"k": 5})
-    bm25_retriever = get_bm25_retriever(docs, k=5)
+    bm25_retriever = get_bm25_retriever(docs, k=10)
     hybrid_retriever = EnsembleRetriever(
         retrievers=[bm25_retriever, faiss_retriever],
         weights=[1 - alpha, alpha]
@@ -70,12 +70,15 @@ def get_hybrid_retriever(faiss_index_path: str, docs: List[Document], alpha: flo
 def GetContext(query: str, docs: List[Document]):
     hybrid_retriever = get_hybrid_retriever("my_faiss_index", docs, alpha=0.5)
     results = hybrid_retriever.invoke(query)
+    source = [doc.metadata.get("source", "Unknown") for doc in results]
     return {
         "query": query,
         "results": [
             {
                 "page_content": res.page_content,
-                "metadata": res.metadata
+                "metadata": res.metadata,
+                "score" : res.metadata.get("score", None),
+                "source":source
             } for res in results
         ]
     }
