@@ -136,6 +136,8 @@ def Query_Optimizer(query):
     
 
 def get_bm25_retriever(docs: List[Document], k: int = 10):
+    if not docs:
+        raise ValueError("❌ get_bm25_retriever received an empty `docs` list. Ensure documents are loaded before calling.")
     retriever = BM25Retriever.from_documents(docs)
     retriever.k = k
     return retriever

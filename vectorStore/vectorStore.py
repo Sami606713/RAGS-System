@@ -68,6 +68,13 @@ def get_hybrid_retriever(faiss_index_path: str, docs: List[Document], alpha: flo
 
 
 def GetContext(query: str, docs: List[Document]):
+    if not docs:
+        return {
+            "query": query,
+            "results": [],
+            "error": "❌ No documents provided to GetContext(). Ensure docs are passed correctly."
+        }
+    
     hybrid_retriever = get_hybrid_retriever("my_faiss_index", docs, alpha=0.5)
 
     # Step 2: Wrap in a contextual compression retriever (adds reranking)
