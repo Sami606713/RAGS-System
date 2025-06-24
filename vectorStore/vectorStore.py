@@ -13,6 +13,8 @@ from langchain_core.documents import Document
 import faiss
 from langchain_community.docstore.in_memory import InMemoryDocstore
 from langchain_community.vectorstores import FAISS
+from langchain_cohere import CohereRerank
+from langchain_community.llms import Cohere
 from uuid import uuid4
 
 load_dotenv()
@@ -20,8 +22,8 @@ load_dotenv()
 # Initialize OpenAI embeddings
 embeddings = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
 # Initialize FlashRank reranker
-ranker_client = Ranker(model_name="ms-marco-MiniLM-L-12-v2")
-compressor = FlashrankRerank(client=ranker_client, model="ms-marco-MiniLM-L-12-v2", top_n=5)
+llm = Cohere(temperature=0, cohere_api_key=os.getenv("COHERE_API_KEY"))
+compressor = CohereRerank(model="rerank-english-v3.0",cohere_api_key =os.getenv("COHERE_API_KEY"))
 
 def add_to_vector_store(docs_chunks: List[Document], batch_size: int = 64, vector_store_path = "my_faiss_index"):
     print(f">> Starting embedding for {len(docs_chunks)} documents...\n")
