@@ -4,11 +4,17 @@ from agno.tools.reasoning import ReasoningTools
 from agno.tools.thinking import ThinkingTools
 from vectorStore.vectorStore import GetContext
 from agno.models.openai import OpenAIChat
+from agno.memory.v2.db.sqlite import SqliteMemoryDb
+from agno.memory.v2.memory import Memory
 from dotenv import load_dotenv
-
+from agno.tools.knowledge import KnowledgeTools
 load_dotenv()
 
-def RunAgent(query):
+# Create a memory instance with persistent storage
+memory_db = SqliteMemoryDb(table_name="memory", db_file="memory.db")
+memory = Memory(db=memory_db)
+
+def RunAgent(query,):
     """
     This agent can run the query and return the response.
     The retriever_tool can accept query and user_id and return the response.
@@ -82,9 +88,13 @@ def RunAgent(query):
             - Every answer must include exact document filenames used—no abbreviations or invented names.
             """
         ],
-            show_tool_calls=True,
+            memory = memory,
+            show_tool_calls=True, 
+            add_history_to_messages=True,
+            num_history_responses=5,
+            enable_user_memories=True,
             markdown=True,
-            model=OpenAIChat(id="gpt-4o")
+            model=OpenAIChat(id="gpt-4o-mini")
         )
     
         response: RunResponse = agent.run(query, stream=False, structured_outputs=True)

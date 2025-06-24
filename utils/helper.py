@@ -2,6 +2,9 @@ from unstructured.partition.pdf import partition_pdf
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_community.retrievers import BM25Retriever
+from typing import List
+from langchain.schema import Document
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -131,11 +134,6 @@ def Query_Optimizer(query):
     except Exception as e:
         return str(e)
     
-
-
-from langchain_community.retrievers import BM25Retriever
-from typing import List
-from langchain.schema import Document
 
 def get_bm25_retriever(docs: List[Document], k: int = 10):
     retriever = BM25Retriever.from_documents(docs)

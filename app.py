@@ -1,7 +1,8 @@
 import streamlit as st
 from agent.agent import RunAgent
 from utils.helper import Query_Optimizer
-
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 # Set Streamlit layout
 st.set_page_config(page_title="Document Chat App", layout="wide")

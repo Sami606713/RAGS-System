@@ -9,3 +9,8 @@ wheels/
 
 # Virtual environments
 .venv
+memory.db
+pyproject.lock
+pyproject.toml
+uv.lock
+test.py

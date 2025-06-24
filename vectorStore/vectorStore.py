@@ -1,27 +1,27 @@
-from pymilvus import MilvusClient
-# from langchain_milvus import Milvus
 from langchain_openai import OpenAIEmbeddings
 from langchain.docstore.document import Document
 from tqdm import tqdm
+from langchain.retrievers import EnsembleRetriever
+from utils.helper import get_bm25_retriever
+from flashrank import Ranker
+from langchain.retrievers.document_compressors import FlashrankRerank
+from langchain.retrievers import ContextualCompressionRetriever
 from dotenv import load_dotenv
 from typing import List
 import os
-
-load_dotenv()
-
-embeddings = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
-
-from typing import List
-
-# =============Fais Setup============#
-from typing import List
 from langchain_core.documents import Document
 import faiss
 from langchain_community.docstore.in_memory import InMemoryDocstore
 from langchain_community.vectorstores import FAISS
 from uuid import uuid4
-from tqdm import tqdm
 
+load_dotenv()
+
+# Initialize OpenAI embeddings
+embeddings = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
+# Initialize FlashRank reranker
+ranker_client = Ranker(model_name="ms-marco-MiniLM-L-12-v2")
+compressor = FlashrankRerank(client=ranker_client, model="ms-marco-MiniLM-L-12-v2", top_n=5)
 
 def add_to_vector_store(docs_chunks: List[Document], batch_size: int = 64, vector_store_path = "my_faiss_index"):
     print(f">> Starting embedding for {len(docs_chunks)} documents...\n")
@@ -53,9 +53,6 @@ def add_to_vector_store(docs_chunks: List[Document], batch_size: int = 64, vecto
     }
 
 
-from langchain.retrievers import EnsembleRetriever
-from utils.helper import get_bm25_retriever
-
 def get_hybrid_retriever(faiss_index_path: str, docs: List[Document], alpha: float = 0.5):
     faiss_vector_store = FAISS.load_local(faiss_index_path, embeddings, allow_dangerous_deserialization=True)
     faiss_retriever = faiss_vector_store.as_retriever(search_kwargs={"k": 5})
@@ -67,18 +64,30 @@ def get_hybrid_retriever(faiss_index_path: str, docs: List[Document], alpha: flo
     return hybrid_retriever
 
 
+
 def GetContext(query: str, docs: List[Document]):
     hybrid_retriever = get_hybrid_retriever("my_faiss_index", docs, alpha=0.5)
-    results = hybrid_retriever.invoke(query)
+
+    # Step 2: Wrap in a contextual compression retriever (adds reranking)
+    compression_retriever = ContextualCompressionRetriever(
+        base_retriever=hybrid_retriever,
+        base_compressor=compressor
+    )
+
+    # Step 3: Retrieve and rerank
+    results = compression_retriever.invoke(query)
+    
     source = [doc.metadata.get("source", "Unknown") for doc in results]
+    # Step 4: Build response
     return {
         "query": query,
         "results": [
             {
                 "page_content": res.page_content,
                 "metadata": res.metadata,
-                "score" : res.metadata.get("score", None),
-                "source":source
+                "source": res.metadata.get("source", "Unknown"),
+                "score": res.metadata.get("score", 0.0),
+                "souces2":source
             } for res in results
         ]
     }
