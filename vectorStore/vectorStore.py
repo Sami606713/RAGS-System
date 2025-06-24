@@ -84,7 +84,7 @@ def GetContext(query: str, docs: List[Document]):
     )
 
     # Step 3: Retrieve and rerank
-    results = compression_retriever.invoke(query)
+    results = hybrid_retriever.invoke(query)
     
     source = [doc.metadata.get("source", "Unknown") for doc in results]
     # Step 4: Build response
