@@ -86,6 +86,7 @@ def RunAgent(query,):
             - Any answer that includes even a single statement not grounded in the provided documents is considered non-compliant.
             - Repeated violations are not allowed. Use the fallback response when unsure.
             - Every answer must include exact document filenames used—no abbreviations or invented names.
+            - When you get the Context use the context and explain the answer based on the user query and the context.
             """
         ],
             memory = memory,
