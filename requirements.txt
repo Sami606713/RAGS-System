@@ -20,6 +20,7 @@ langchain-groq
 langchain-milvus
 agno
 opencv-python-headless
+langchain_cohere
 streamlit
 faiss-cpu
 flashrank
