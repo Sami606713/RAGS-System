@@ -80,6 +80,7 @@ def RunAgent(query,):
             - Avoid answers shorter than 3 sentences unless the context only supports a brief response.
             - Avoid excessively long answers that repeat or extend beyond the information strictly present in the documents.
             - Focus on clarity and completeness within these length boundaries.
+            - Always explain the answer by using the context.
 
             COMPLIANCE POLICY:
             - This instruction set follows a ZERO-TOLERANCE policy for hallucination, fabrication, or assumption.
@@ -87,6 +88,8 @@ def RunAgent(query,):
             - Repeated violations are not allowed. Use the fallback response when unsure.
             - Every answer must include exact document filenames used—no abbreviations or invented names.
             - When you get the Context use the context and explain the answer based on the user query and the context.
+            — Sources: Always include those sources that is present[Document1.pdf], [Document2.pdf]
+            donot generate sources form your own
             """
         ],
             memory = memory,

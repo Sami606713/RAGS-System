@@ -105,27 +105,23 @@ def Query_Optimizer(query):
     """
     try:
         prompt_template = """
-    You are an expert in query optimization with deep understanding of language efficiency and intent clarity.
+        You are a query expansion expert working on improving search relevance.
 
-    Your task is to improve the given user query by removing redundant, vague, or irrelevant phrases—while preserving its original intent and enhancing focus.
+        Your task is to rewrite the following user query to make it more informative and clear, without changing its intent. You can:
+        - Add missing context (e.g., expand abbreviations, clarify vague terms).
+        - Add synonyms or related keywords to improve search accuracy.
+        - Make it more specific when possible.
 
-    Use the following framework to guide the optimization:
+        Rules:
+        1. Do not change the user's intent.
+        2. Do not add unrelated information.
+        3. Return only the improved query—no explanation or formatting.
 
-    - What: Identify the core subject or intent of the query.
-    - Why: Determine which parts dilute, distract, or unnecessarily lengthen the query.
-    - How: Remove or rephrase those parts to make the query more concise, precise, and effective for downstream tasks (e.g., search, retrieval, generation).
+        Original Query:
+        {query}
 
-    Rules:
-    1. Preserve the meaning and context of the original query.
-    2. Do not add new information or change the query's intent.
-    3. Avoid filler words, excessive adjectives, or overly general terms.
-    4. Do not explain your process or add commentary—return only the optimized query.
-
-    Original Query:
-    {query}
-
-    Optimized Query:
-    """
+        Expanded Query:
+        """
 
         prompt = ChatPromptTemplate.from_template(prompt_template)
         model = ChatOpenAI(temperature=0.5, model="gpt-4o-mini")

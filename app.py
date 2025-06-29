@@ -26,7 +26,9 @@ if user_input:
         st.markdown(user_input)
 
     # Optimize query
+    print(f"Original Query: {user_input}")
     # user_input = Query_Optimizer(user_input)
+    # print(f"Optimized Query: {user_input}")
     # Run agent
     response = RunAgent(query=user_input)
 
