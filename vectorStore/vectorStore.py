@@ -15,6 +15,8 @@ from langchain_community.docstore.in_memory import InMemoryDocstore
 from langchain_community.vectorstores import FAISS
 from langchain_cohere import CohereRerank
 from langchain_community.llms import Cohere
+from langchain.retrievers.multi_query import MultiQueryRetriever
+from langchain_openai import ChatOpenAI
 from uuid import uuid4
 
 load_dotenv()
@@ -65,8 +67,21 @@ def get_hybrid_retriever(faiss_index_path: str, docs: List[Document], alpha: flo
     )
     return hybrid_retriever
 
+# Add a query expension by using MultiQueryRetriever
+def get_multiquery_hybrid_retriever(docs: List[Document], faiss_index_path: str, alpha: float = 0.5):
+    # Build hybrid retriever (BM25 + FAISS)
+    hybrid_retriever = get_hybrid_retriever(faiss_index_path, docs, alpha=alpha)
 
+    # Add MultiQueryRetriever on top of hybrid retriever
+    llm = ChatOpenAI(temperature=0.0, model="gpt-4o-mini")  # or "gpt-3.5-turbo"
+    multi_query_retriever = MultiQueryRetriever.from_llm(
+        retriever=hybrid_retriever,
+        llm=llm
+    )
 
+    return multi_query_retriever
+
+# get context
 def GetContext(query: str, docs: List[Document]):
     if not docs:
         return {
@@ -74,20 +89,26 @@ def GetContext(query: str, docs: List[Document]):
             "results": [],
             "error": "❌ No documents provided to GetContext(). Ensure docs are passed correctly."
         }
-    
-    hybrid_retriever = get_hybrid_retriever("my_faiss_index", docs, alpha=0.5)
 
-    # Step 2: Wrap in a contextual compression retriever (adds reranking)
+    # ✅ Step 1: Optimize queryx
+    print(">> Applying Query Expansion...")
+    # ✅ Step 2: Create hybrid + multiquery retriever
+    multiquery_hybrid_retriever = get_multiquery_hybrid_retriever(docs, faiss_index_path="my_faiss_index", alpha=0.5)
+    print(">> Creating MultiQuery Hybrid Retriever...")
+
+    # ✅ Step 3: Wrap with compression retriever for reranking
+    print(">> Creating Contextual Compression Retriever...")
     compression_retriever = ContextualCompressionRetriever(
-        base_retriever=hybrid_retriever,
+        base_retriever=multiquery_hybrid_retriever,
         base_compressor=compressor
     )
 
-    # Step 3: Retrieve and rerank
+    # ✅ Step 4: Retrieve
     results = compression_retriever.invoke(query)
-    
+
+  
     source = [doc.metadata.get("source", "Unknown") for doc in results]
-    # Step 4: Build response
+
     return {
         "query": query,
         "results": [
@@ -96,11 +117,10 @@ def GetContext(query: str, docs: List[Document]):
                 "metadata": res.metadata,
                 "source": res.metadata.get("source", "Unknown"),
                 "score": res.metadata.get("score", 0.0),
-                "souces2":source
+                "souces2": source
             } for res in results
         ]
     }
-
 
 
 if __name__ == "__main__":
