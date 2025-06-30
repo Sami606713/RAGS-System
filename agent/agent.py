@@ -1,4 +1,5 @@
 from agno.agent import Agent, RunResponse
+from typing import Iterator
 from agno.models.groq import Groq
 from agno.tools.reasoning import ReasoningTools
 from agno.tools.thinking import ThinkingTools
@@ -98,10 +99,13 @@ def RunAgent(query,):
             num_history_responses=5,
             enable_user_memories=True,
             markdown=True,
-            model=OpenAIChat(id="gpt-4o-mini")
+            model=OpenAIChat(id="gpt-4o-mini"),
         )
     
-        response: RunResponse = agent.run(query, stream=False, structured_outputs=True)
-        return response.content
+        run_response: Iterator[RunResponse]  = agent.run(query, stream=True)
+        # # pprint_run_response(response, markdown=True)
+        for chunk in run_response:
+            yield chunk.content
+        # return agent.run(query, stream=True)
     except Exception as e:
         return str(e)
