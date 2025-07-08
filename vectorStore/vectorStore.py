@@ -57,56 +57,28 @@ def add_to_vector_store(docs_chunks: List[Document], batch_size: int = 64, vecto
     }
 
 
-def get_hybrid_retriever(faiss_index_path: str, docs: List[Document], alpha: float = 0.5):
+def GetQueryContext(query: str,faiss_index_path: str="index.faiss"):
     faiss_vector_store = FAISS.load_local(faiss_index_path, embeddings, allow_dangerous_deserialization=True)
+
+    print(">> Creating FAISS Retriever...")
     faiss_retriever = faiss_vector_store.as_retriever(search_kwargs={"k": 5})
-    bm25_retriever = get_bm25_retriever(docs, k=10)
-    hybrid_retriever = EnsembleRetriever(
-        retrievers=[bm25_retriever, faiss_retriever],
-        weights=[1 - alpha, alpha]
-    )
-    return hybrid_retriever
+    # Use the retriever to get the context for the query
 
-# Add a query expension by using MultiQueryRetriever
-def get_multiquery_hybrid_retriever(docs: List[Document], faiss_index_path: str, alpha: float = 0.5):
-    # Build hybrid retriever (BM25 + FAISS)
-    hybrid_retriever = get_hybrid_retriever(faiss_index_path, docs, alpha=alpha)
-
-    # Add MultiQueryRetriever on top of hybrid retriever
-    llm = ChatOpenAI(temperature=0.0, model="gpt-4o-mini")  # or "gpt-3.5-turbo"
+    print(">> Creating MultiQuery Retriever...")
     multi_query_retriever = MultiQueryRetriever.from_llm(
-        retriever=hybrid_retriever,
+        retriever=faiss_retriever,
         llm=llm
     )
+    # results = multi_query_retriever.invoke(query)
 
-    return multi_query_retriever
-
-# get context
-def GetContext(query: str, docs: List[Document]):
-    if not docs:
-        return {
-            "query": query,
-            "results": [],
-            "error": "❌ No documents provided to GetContext(). Ensure docs are passed correctly."
-        }
-
-    # ✅ Step 1: Optimize queryx
-    print(">> Applying Query Expansion...")
-    # ✅ Step 2: Create hybrid + multiquery retriever
-    multiquery_hybrid_retriever = get_multiquery_hybrid_retriever(docs, faiss_index_path="my_faiss_index", alpha=0.5)
-    print(">> Creating MultiQuery Hybrid Retriever...")
-
-    # ✅ Step 3: Wrap with compression retriever for reranking
-    print(">> Creating Contextual Compression Retriever...")
+    # Apply reranker
+    print(">> Applying Reranker...")
     compression_retriever = ContextualCompressionRetriever(
-        base_retriever=multiquery_hybrid_retriever,
+        base_retriever=multi_query_retriever,
         base_compressor=compressor
     )
-
-    # ✅ Step 4: Retrieve
     results = compression_retriever.invoke(query)
 
-  
     source = [doc.metadata.get("source", "Unknown") for doc in results]
 
     return {
@@ -123,5 +95,9 @@ def GetContext(query: str, docs: List[Document]):
     }
 
 
+
 if __name__ == "__main__":
-   pass
+    context = GetQueryContext("What is the price of methanol?")
+    print("Context Retrieved:")
+    for res in context['results']:
+         print(f"Source: {res['source']}, Content: {res['page_content'][:100]}...")  # Print first 100 chars of content

@@ -1,76 +1,41 @@
-from agent.agent import RunAgent
-from utils.helper import Query_Optimizer
+# generator/generator.py
+
+from langchain.chains import RetrievalQA
+from langchain_core.documents import Document
+from langchain_openai import ChatOpenAI
+from typing import List
+from vectorStore.vectorStore import GetQueryContext
+from langchain_community.vectorstores import FAISS
+from langchain_openai import OpenAIEmbeddings
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
-
-# # Simple Questions
-# simple_questions = [
-#     "What does WPT stand for in the context of maritime shipping?",
-#     "What is the primary goal of adopting wind-assisted ship propulsion technologies?",
-#     "Name three types of wind propulsion technologies discussed in the paper.",
-#     "What is the main function of the International Maritime Organization (IMO)?",
-#     "What is the maximum vessel lifetime considered in the agent-based model?"
-# ]
-
-# # Medium-Level Questions
-# medium_questions = [
-#     "Explain how the Bass model is used to simulate awareness of wind propulsion technology.",
-#     "Describe the role of the utility-based decision-making mechanism in WPT adoption.",
-#     "What is the significance of the social network structure in the agent-based simulation?",
-#     "How does the installation cost (𝐾𝑗) affect the adoption decision in the model?",
-#     "Compare the advantages of Flettner rotors and Wingsail technologies in terms of installation and fuel savings."
-# ]
-
-# # Complex Questions
-# complex_questions = [
-#     "Why does increased WPT awareness lead to more Ventifoil adoption compared to Wingsail in mid-subsidy scenarios?",
-#     "How do network effects influence early adoption in the simulation, and why is SF4 chosen as the topology?",
-#     "Under what policy conditions does Wingsail adoption outperform Ventifoil in the 30-year forecast?",
-#     "Explain why subsidies have a more significant impact than fuel tax in promoting WPT adoption.",
-#     "How does heterogeneity in vessel characteristics affect the utility calculation across different WPT options?"
-# ]
-
-# # Graph/Chart-Based Questions (without figure references)
-# graph_questions = [
-#     "How does initial awareness percentage affect the shape of the awareness diffusion curve?",
-#     "Which WPT technology shows the highest adoption rate at high sailing distances and why?",
-#     "At what installation subsidy level does the Ventifoil option start to outperform Wingsail adoption?",
-#     "What trend is observed when initial awareness is increased to 10%? How does this affect technology preference?",
-#     "How does the combined impact of subsidy and fuel tax change the long-term adoption trend of Ventifoil?"
-# ]
+# Load LLM for generation
+llm = ChatOpenAI(temperature=0.3, model="gpt-4o-mini")
 
 
-# def generate_responses(category_name, questions):
-#     responses = []
-#     for i, query in enumerate(questions, 1):
-#         print(f">> Generating response for {category_name} Q{i}: {query}")
-#         response = RunAgent(query=query)
-#         responses.append((query, response))
-#     return responses
+def generate_answer(query: str) -> str:
+    """
+    Retrieve context and generate an answer using the LLM.
+    """
+    context_text = GetQueryContext(query, faiss_index_path="my_faiss_index")
+    
+    prompt = f"""
+    You are an expert assistant. Use ONLY the following context to answer the user's question. If the answer is not in the context, say you don't know.
+    you can use the context to explain the answer but note that answer is not too long not too short.
+    but note that the answer should be in the context.
 
-# def save_to_txt(file_path, all_responses):
-#     with open(file_path, 'w', encoding='utf-8') as f:
-#         for category, responses in all_responses.items():
-#             f.write(f"\n=== {category.upper()} QUESTIONS ===\n\n")
-#             for i, (q, a) in enumerate(responses, 1):
-#                 f.write(f"Q{i}: {q}\n")
-#                 f.write(f"A{i}: {a}\n\n")
+    Context:
+    {context_text}
+
+    Question: {query}
+    Answer:
+    """
+    response = llm.invoke(prompt)
+    return response
 
 if __name__ == "__main__":
-    # all_responses = {
-    #     "Simple": generate_responses("Simple", simple_questions),
-    #     "Medium": generate_responses("Medium", medium_questions),
-    #     "Complex": generate_responses("Complex", complex_questions),
-    #     "Graph-Based": generate_responses("Graph-Based", graph_questions)
-    # }
+    user_query ="can you create a table for fuels rates"
 
-    # save_to_txt("wind-assist.txt", all_responses)
-    # print("✅ All responses saved to responses.txt")
-
-    query =  "Analyze the pace of infrastructure deployment at the Port of Rotterdam. What can other ports learn from this timeline?"
-    # query = Query_Optimizer(query)
-    # print(f"Optimized Query: {query}")
-    response = RunAgent(query=query)
-    print(f"Query: {query}")
-    print(f"Response: {response}")
+    answer = generate_answer(user_query)
+    print(f"\nAnswer:\n{answer}")
