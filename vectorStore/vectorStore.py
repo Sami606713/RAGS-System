@@ -2,7 +2,7 @@ from langchain_openai import OpenAIEmbeddings
 from langchain.docstore.document import Document
 from tqdm import tqdm
 from langchain.retrievers import EnsembleRetriever
-from utils.helper import get_bm25_retriever
+from utils.helper import get_bm25_retriever,Query_Optimizer
 from flashrank import Ranker
 from langchain.retrievers.document_compressors import FlashrankRerank
 from langchain.retrievers import ContextualCompressionRetriever
@@ -61,7 +61,7 @@ def GetQueryContext(query: str,faiss_index_path: str="index.faiss"):
     faiss_vector_store = FAISS.load_local(faiss_index_path, embeddings, allow_dangerous_deserialization=True)
 
     print(">> Creating FAISS Retriever...")
-    faiss_retriever = faiss_vector_store.as_retriever(search_kwargs={"k": 5})
+    faiss_retriever = faiss_vector_store.as_retriever(search_kwargs={"k": 510})
     # Use the retriever to get the context for the query
 
     print(">> Creating MultiQuery Retriever...")
@@ -77,7 +77,11 @@ def GetQueryContext(query: str,faiss_index_path: str="index.faiss"):
         base_retriever=multi_query_retriever,
         base_compressor=compressor
     )
-    results = compression_retriever.invoke(query)
+    print(">> Query ",query)
+    refine_query = Query_Optimizer(query)
+
+    print(">> After Query Optimizer ",refine_query)
+    results = compression_retriever.invoke(refine_query)
 
     source = [doc.metadata.get("source", "Unknown") for doc in results]
 

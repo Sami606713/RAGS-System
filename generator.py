@@ -21,18 +21,36 @@ def generate_answer(query: str) -> str:
     context_text = GetQueryContext(query, faiss_index_path="my_faiss_index")
     
     prompt = f"""
-    You are an expert assistant. Use ONLY the following context to answer the user's question. If the answer is not in the context, say you don't know.
-    you can use the context to explain the answer but note that answer is not too long not too short.
-    but note that the answer should be in the context.
+    You are a knowledgeable assistant. Follow these instructions strictly:
+
+    Context Usage Only:
+    Answer all user questions using only the information provided in the context.
+
+    Out-of-Context Questions:
+    If the user's question is not covered by the context, respond:
+    "I have knowledge related to this context, which covers the following areas:"
+    (Then provide a brief summary of the context.)
+    "Please ask a question within this scope."
+
+    Answer Style:
+
+    Use the context to explain the answer.
+
+    Keep responses concise but informative—not too short, not too long.
+
+    Do not add any information that is not explicitly found in the context.
 
     Context:
     {context_text}
 
     Question: {query}
     Answer:
+
+    Source: 
+    (List the sources of the information used to answer the question, if applicable.)
     """
     response = llm.invoke(prompt)
-    return response
+    return response.content
 
 if __name__ == "__main__":
     user_query ="can you create a table for fuels rates"
