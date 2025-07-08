@@ -33,10 +33,10 @@ if user_input:
 
     # Show bot response
     with st.chat_message("Bot"):
-        response_stream = RunAgent(query=user_input)
-        if(response_stream is None):
-            st.spinner("Thinking..")
-        st.write_stream(response_stream)
+        with st.spinner("Thinking..."):
+            response_stream = RunAgent(query=user_input)
+            if response_stream:
+                st.write_stream(response_stream)
     # Save to chat history
     # st.session_state.chat_history.append(("You", user_input))
     # st.session_state.chat_history.append(("Bot", full_response))

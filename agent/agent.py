@@ -10,7 +10,7 @@ from agno.memory.v2.memory import Memory
 from dotenv import load_dotenv
 from agno.tools.knowledge import KnowledgeTools
 load_dotenv()
-
+ 
 # Create a memory instance with persistent storage
 memory_db = SqliteMemoryDb(table_name="memory", db_file="memory.db")
 memory = Memory(db=memory_db)
@@ -23,8 +23,8 @@ def RunAgent(query,):
     try:
         agent = Agent(
             tools=[GetContext,
-                   ReasoningTools(add_instructions=True),
-                   ThinkingTools(add_instructions=True)
+                #    ReasoningTools(add_instructions=True),
+                #    ThinkingTools(add_instructions=True)
                    ],
             description=(
                 "This agent strictly processes user queries using ONLY the provided context. "
@@ -91,6 +91,7 @@ def RunAgent(query,):
             - When you get the Context use the context and explain the answer based on the user query and the context.
             — Sources: Always include those sources that is present[Document1.pdf], [Document2.pdf]
             donot generate sources form your own
+            - Always explain the answer by using the context.
             """
         ],
             memory = memory,
