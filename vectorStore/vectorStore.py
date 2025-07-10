@@ -14,7 +14,7 @@ import faiss
 from langchain_community.docstore.in_memory import InMemoryDocstore
 from langchain_community.vectorstores import FAISS
 from langchain_cohere import CohereRerank
-from langchain_community.llms import Cohere
+from langchain_cohere import ChatCohere
 from langchain.retrievers.multi_query import MultiQueryRetriever
 from langchain_openai import ChatOpenAI
 from uuid import uuid4
@@ -24,7 +24,7 @@ load_dotenv()
 # Initialize OpenAI embeddings
 embeddings = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
 # Initialize FlashRank reranker
-llm = Cohere(temperature=0, cohere_api_key=os.getenv("COHERE_API_KEY"))
+llm = ChatCohere(temperature=0, cohere_api_key=os.getenv("COHERE_API_KEY"))
 compressor = CohereRerank(model="rerank-english-v3.0",cohere_api_key =os.getenv("COHERE_API_KEY"))
 
 def add_to_vector_store(docs_chunks: List[Document], batch_size: int = 64, vector_store_path = "my_faiss_index"):
