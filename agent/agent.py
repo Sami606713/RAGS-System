@@ -3,7 +3,7 @@ from typing import Iterator
 from agno.models.groq import Groq
 from agno.tools.reasoning import ReasoningTools
 from agno.tools.thinking import ThinkingTools
-from vectorStore.vectorStore import GetContext
+# from vectorStore.vectorStore import GetContext
 from agno.models.openai import OpenAIChat
 from agno.memory.v2.db.sqlite import SqliteMemoryDb
 from agno.memory.v2.memory import Memory

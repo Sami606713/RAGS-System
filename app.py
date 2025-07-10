@@ -2,7 +2,6 @@ import streamlit as st
 from agent.agent import RunAgent
 from agno.agent import Agent, RunResponse
 from typing import Iterator
-from utils.helper import Query_Optimizer
 from generator import generate_answer
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
@@ -35,9 +34,8 @@ if user_input:
     # Show bot response
     with st.chat_message("Bot"):
         with st.spinner("Thinking..."):
-            response_stream = RunAgent(query=user_input)
-            if response_stream:
-                st.write_stream(response_stream)
+            response = generate_answer(user_input)
+            st.markdown(response)
     # Save to chat history
-    # st.session_state.chat_history.append(("You", user_input))
-    # st.session_state.chat_history.append(("Bot", full_response))
+    st.session_state.chat_history.append(("You", user_input))
+    st.session_state.chat_history.append(("Bot", response))
