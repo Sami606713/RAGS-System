@@ -13,8 +13,8 @@ from langchain_core.documents import Document
 import faiss
 from langchain_community.docstore.in_memory import InMemoryDocstore
 from langchain_community.vectorstores import FAISS
-# from langchain_cohere import CohereRerank
-# from langchain_cohere import ChatCohere
+from langchain_cohere import CohereRerank
+from langchain_cohere import ChatCohere
 from langchain.retrievers.multi_query import MultiQueryRetriever
 from langchain_openai import ChatOpenAI
 from uuid import uuid4
@@ -24,8 +24,8 @@ load_dotenv()
 # Initialize OpenAI embeddings
 embeddings = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
 # Initialize FlashRank reranker
-llm = ChatOpenAI(temperature=0, api_key=os.getenv("OPENAI_API_KEY"))
-# compressor = CohereRerank(model="rerank-english-v3.0",cohere_api_key =os.getenv("COHERE_API_KEY"))
+llm = ChatCohere(temperature=0, cohere_api_key=os.getenv("COHERE_API_KEY"))
+compressor = CohereRerank(model="rerank-english-v3.0",cohere_api_key =os.getenv("COHERE_API_KEY"))
 
 compressor = FlashrankRerank()
 
