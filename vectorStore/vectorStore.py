@@ -3,7 +3,6 @@ from langchain.docstore.document import Document
 from tqdm import tqdm
 from langchain.retrievers import EnsembleRetriever
 from utils.helper import get_bm25_retriever,Query_Optimizer
-from flashrank import Ranker
 from langchain.retrievers.document_compressors import FlashrankRerank
 from langchain.retrievers import ContextualCompressionRetriever
 from dotenv import load_dotenv
