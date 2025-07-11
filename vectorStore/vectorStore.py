@@ -24,7 +24,8 @@ load_dotenv()
 # Initialize OpenAI embeddings
 embeddings = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
 # Initialize FlashRank reranker
-llm = ChatCohere(temperature=0, cohere_api_key=os.getenv("COHERE_API_KEY"))
+# llm = ChatCohere(temperature=0, cohere_api_key=os.getenv("COHERE_API_KEY"))
+llm = ChatOpenAI(temperature=0.3, model="gpt-4o-mini")
 compressor = CohereRerank(model="rerank-english-v3.0",cohere_api_key =os.getenv("COHERE_API_KEY"))
 
 
