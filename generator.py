@@ -16,7 +16,7 @@ llm = ChatOpenAI(temperature=0.3, model="gpt-4o-mini")
 
 def generate_answer(query: str) -> str:
     """
-    Retrieve context and generate an answer using the LLM.
+    Retrieve context and generate an answer using the LLM. 
     """
     context_text = GetQueryContext(query, faiss_index_path="my_faiss_index")
     
