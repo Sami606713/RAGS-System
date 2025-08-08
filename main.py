@@ -4,12 +4,13 @@ from utils.helper import LoadAndExtractData
 from summerizer.summarizer import summarize_text, summarize_image
 from langchain_core.documents import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from vectorStore.vectorStore import add_to_vector_store
+from langchain_experimental.text_splitter import SemanticChunker
+from vectorStore.vectorStore import add_to_vector_store,get_embeddings
 
 def main():
     try:
-        root_dir = "data"
-        processed_log_path = "processed_files.txt"
+        root_dir = "docs"
+        processed_log_path = "processFile2.txt"
 
         # Load already processed file names
         if os.path.exists(processed_log_path):
@@ -50,11 +51,17 @@ def main():
                 docs = text_docs + table_docs + image_docs
 
                 print(">> Splitting Documents")
-                document_splitter = RecursiveCharacterTextSplitter(
-                    chunk_size=1000,
-                    chunk_overlap=200,
-                    length_function=len,
-                    is_separator_regex=False,
+                # document_splitter = RecursiveCharacterTextSplitter(
+                #     chunk_size=1000,
+                #     chunk_overlap=200,
+                #     length_function=len,
+                #     is_separator_regex=False,
+                # )
+
+                document_splitter = SemanticChunker(
+                    get_embeddings(), breakpoint_threshold_type="gradient",
+                    number_of_chunks=100,
+                    
                 )
 
                 docs_chunks = document_splitter.split_documents(docs)
