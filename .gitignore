@@ -14,4 +14,3 @@ pyproject.lock
 pyproject.toml
 uv.lock
 test.py
-my_faiss_index2/
