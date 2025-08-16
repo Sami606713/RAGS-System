@@ -10,7 +10,7 @@ from vectorStore.vectorStore import add_to_vector_store,get_embeddings
 def main():
     try:
         root_dir = "docs"
-        processed_log_path = "processFile2.txt"
+        processed_log_path = "processFile3.txt"
 
         # Load already processed file names
         if os.path.exists(processed_log_path):

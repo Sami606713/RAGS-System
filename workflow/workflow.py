@@ -5,6 +5,8 @@ from workflow.nodes.docReordering import ReOrderingDocument
 from workflow.nodes.queryDecomposer import query_decomposition
 from workflow.nodes.queryExpension import query_expansion
 from workflow.nodes.generator import generate_answer
+from workflow.nodes.queryUpdater import query_updater
+from workflow.Evulation.Evulaiton import evaluate_response
 from langgraph.graph import StateGraph,START,END
 from workflow.states.states import AgentState
 from langchain_community.docstore.in_memory import InMemoryDocstore
@@ -27,6 +29,8 @@ def create_workflow():
     workflow.add_node("Doc ReOrdering", RunnableLambda(ReOrderingDocument))
     workflow.add_node("ReRanking", RunnableLambda(ReRanker))
     workflow.add_node("Generator", RunnableLambda(generate_answer))
+    # Evaluation
+    # workflow.add_node("QueryUpdater", RunnableLambda(query_updater))
 
     # Define the edges
     workflow.add_edge(START, "Query Rewriter")
@@ -42,7 +46,19 @@ def create_workflow():
     workflow.add_edge("Doc ReOrdering", "ReRanking")
     workflow.add_edge("ReRanking", "Generator")
 
-    workflow.add_edge("Generator", END)
+    workflow.add_edge("Generator",END)
+    # workflow.add_conditional_edges(
+    #     "Generator",
+    #     evaluate_response,
+    #     {
+    #         "yes":END,
+    #         "no": "QueryUpdater"
+    #     }
+    # )
+
+    # workflow.add_edge("QueryUpdater","Get Context")
+    # workflow.add_edge("QueryUpdater","Query Expansion")
+    # workflow.add_edge("QueryUpdater","Query Decomposition")
 
 
     # checkpointer = InMemoryDocstore()

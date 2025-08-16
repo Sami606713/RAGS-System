@@ -13,6 +13,7 @@ def ReRanker(state:AgentState):
         print("Reranking....")
         updated_context = state['context']
         query = state['rewrite_question']
+        sources = list(set([doc.metadata.get('source', 'Unknown') for doc in updated_context]))
 
         # reranked docs
         compressor = CohereRerank(model="rerank-english-v3.0", cohere_api_key=os.getenv("COHERE_API_KEY"))
@@ -26,9 +27,10 @@ def ReRanker(state:AgentState):
         )
 
         # Option 1: Return top 3 (or top-k)
-        top_docs = reranked_docs_sorted[:20]
+        top_docs = reranked_docs_sorted[:40]
         return {
-            "reranked_context":top_docs
+            "reranked_context":top_docs,
+            "sources":sources
         }
     except Exception as e:
         print(f"Error in reranking: {str(e)}")

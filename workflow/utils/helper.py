@@ -1,6 +1,6 @@
 from langchain_community.vectorstores import FAISS
 from vectorStore.vectorStore import get_embeddings
-def load_vector_store(vector_store_path: str = "my_faiss_index2"):
+def load_vector_store(vector_store_path: str = "my_faiss_index3"):
     """
     Load the FAISS vector store from the specified path.
     """
