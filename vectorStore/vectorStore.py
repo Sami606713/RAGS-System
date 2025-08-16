@@ -16,7 +16,7 @@ from langchain_cohere import CohereRerank
 from langchain_cohere.chat_models import ChatCohere
 from langchain.retrievers.multi_query import MultiQueryRetriever
 from langchain_openai import ChatOpenAI
-from langchain_voyageai import VoyageAIEmbeddings
+# from langchain_voyageai import VoyageAIEmbeddings
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from uuid import uuid4
 
