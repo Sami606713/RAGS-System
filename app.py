@@ -1,7 +1,8 @@
+import uuid
 import streamlit as st
 from workflow.workflow import create_workflow
 import os
-from uuid import uuid4
+import uuid
 
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
@@ -11,6 +12,9 @@ st.title("📄 Document Chat App")
 
 # Initialize workflow app
 app = create_workflow()
+config = {
+    "configurable": {"thread_id": str(uuid.uuid1())},
+}
 
 # Initialize session state for chat history
 if "messages" not in st.session_state:
@@ -19,7 +23,7 @@ if "messages" not in st.session_state:
 # Function to stream response
 def stream_response():
     def response_generator():
-        for msg, metadata in app.stream({"question": user_input}, stream_mode="messages"):
+        for msg, metadata in app.stream({"question": user_input}, config=config, stream_mode="messages"):
             node_name = metadata.get("langgraph_node", "Unknown Node")
             status.update(label=f"{node_name}", state="running", expanded=True)
             if msg.content and metadata["langgraph_node"] == "Generator":

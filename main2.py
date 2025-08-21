@@ -37,33 +37,35 @@ def main():
             documents = loader.load()
             print("Number of LangChain documents:", len(documents))
             print("Length of text in the first document:", len(documents[0].page_content))
-
-            # Get summary for the whole document
-            text_summary = summarize_text(data=documents)
-
+            
+            # generate the summary for each doc
             for doc in documents:
-                metadata = doc.metadata
-                metadata["summary"] = text_summary if isinstance(text_summary, str) else text_summary[0]
-                print("MetaData:", metadata)
+                doc.metadata["summary"] = summarize_text(data=doc.page_content)
+            print(">> Summary Generated")
 
-            # Optional: split into smaller chunks before adding to vector store
-            splitter = SemanticChunker(
-                    get_embeddings(), breakpoint_threshold_type="gradient",
-                    # number_of_chunks=100,
-                )
+            # for doc in documents:
+            #     metadata = doc.metadata
+            #     metadata["summary"] = text_summary if isinstance(text_summary, str) else text_summary[0]
+            #     print("MetaData:", metadata)
+
+            # # Optional: split into smaller chunks before adding to vector store
+            # splitter = SemanticChunker(
+            #         get_embeddings(), breakpoint_threshold_type="gradient",
+            #         # number_of_chunks=100,
+            #     )
 
             # splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-            chunks = splitter.split_documents(documents)
+            # chunks = splitter.split_documents(documents)
 
-            add_to_vector_store(docs_chunks=chunks)
+        #     add_to_vector_store(docs_chunks=chunks)
 
-            # Mark file as processed
-            with open(processed_log_path, 'a') as f:
-                f.write(file + '\n')
+        #     # Mark file as processed
+        #     with open(processed_log_path, 'a') as f:
+        #         f.write(file + '\n')
 
-            print(f">> Marked {file} as processed")
-        else:
-            print(f"!! Skipping already processed or unsupported file: {file}")
+        #     print(f">> Marked {file} as processed")
+        # else:
+        #     print(f"!! Skipping already processed or unsupported file: {file}")
 
 
 if __name__ == "__main__":

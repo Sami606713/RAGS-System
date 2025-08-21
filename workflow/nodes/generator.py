@@ -34,4 +34,5 @@ def generate_answer(state: AgentState):
         }
 
     except Exception as e:
-        return {'error': str(e)}
+        print("Error in answer generation:", str(e))
+        return str(e)

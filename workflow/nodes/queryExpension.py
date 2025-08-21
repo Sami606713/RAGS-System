@@ -1,5 +1,5 @@
 from workflow.states.states import AgentState
-from workflow.utils.helper import load_vector_store
+from workflow.utils.helper import load_tfidf_store, load_vector_store,load_tfidf_store
 from workflow.models.loadModel import load_model
 from langchain.retrievers.multi_query import MultiQueryRetriever
 
@@ -16,10 +16,11 @@ def query_expansion(state:AgentState):
        """
        try:
               vector_store = load_vector_store()
+
               retriever_from_llm = MultiQueryRetriever.from_llm(
               retriever=vector_store.as_retriever(), llm=load_model()
               )
-
+              
               # get the question
               question = state['rewrite_question']
 
@@ -29,5 +30,5 @@ def query_expansion(state:AgentState):
                      "context":context
               }
        except Exception as e:
-           print(f"Error in query expansion: {str(e)}")
-           return {'error': str(e)}
+              print("Error in answer generation:", str(e))
+              return str(e)

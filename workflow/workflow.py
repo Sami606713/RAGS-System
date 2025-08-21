@@ -9,10 +9,12 @@ from workflow.nodes.queryUpdater import query_updater
 from workflow.Evulation.Evulaiton import evaluate_response
 from langgraph.graph import StateGraph,START,END
 from workflow.states.states import AgentState
-from langchain_community.docstore.in_memory import InMemoryDocstore
+from langgraph.checkpoint.memory import InMemorySaver
 from langchain_core.runnables import RunnableLambda
+from langchain.embeddings import init_embeddings
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+embeddings = init_embeddings("openai:text-embedding-3-small")
 
 def create_workflow():
     """
@@ -29,8 +31,6 @@ def create_workflow():
     workflow.add_node("Doc ReOrdering", RunnableLambda(ReOrderingDocument))
     workflow.add_node("ReRanking", RunnableLambda(ReRanker))
     workflow.add_node("Generator", RunnableLambda(generate_answer))
-    # Evaluation
-    # workflow.add_node("QueryUpdater", RunnableLambda(query_updater))
 
     # Define the edges
     workflow.add_edge(START, "Query Rewriter")
@@ -47,21 +47,8 @@ def create_workflow():
     workflow.add_edge("ReRanking", "Generator")
 
     workflow.add_edge("Generator",END)
-    # workflow.add_conditional_edges(
-    #     "Generator",
-    #     evaluate_response,
-    #     {
-    #         "yes":END,
-    #         "no": "QueryUpdater"
-    #     }
-    # )
 
-    # workflow.add_edge("QueryUpdater","Get Context")
-    # workflow.add_edge("QueryUpdater","Query Expansion")
-    # workflow.add_edge("QueryUpdater","Query Decomposition")
-
-
-    # checkpointer = InMemoryDocstore()
+    # checkpointer = InMemorySaver()
 
     return workflow.compile()
 

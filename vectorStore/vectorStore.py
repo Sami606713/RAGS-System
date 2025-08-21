@@ -2,7 +2,7 @@ from langchain_openai import OpenAIEmbeddings
 from langchain.docstore.document import Document
 from tqdm import tqdm
 from langchain.retrievers import EnsembleRetriever
-from utils.helper import get_bm25_retriever,Query_Optimizer
+from langchain_community.retrievers import TFIDFRetriever
 # from langchain.retrievers.document_compressors import FlashrankRerank
 from langchain.retrievers import ContextualCompressionRetriever
 from dotenv import load_dotenv
@@ -87,3 +87,26 @@ def add_to_vector_store(docs_chunks: List[Document], batch_size: int = 32, vecto
         }
     except Exception as e:
         raise Exception(f"Error in add_to_vector_store: {str(e)}")
+
+def build_tfidf_store(docs_chunks: List[Document], vector_store_path = "my_faiss_index3"):
+    """
+    Build a TF-IDF vector store from the provided document chunks.
+    """
+    embeddings = get_embeddings()
+    if os.path.exists(vector_store_path):
+        print(">> Loading the index <<")
+        vector_store = FAISS.load_local(vector_store_path, embeddings, allow_dangerous_deserialization=True)
+    else:
+        print(">> Creating the index  <<")
+        dimension = len(embeddings.embed_query("hello world"))
+        index = faiss.IndexFlatL2(dimension)
+        vector_store = FAISS(
+            embedding_function=embeddings,
+            index=index,
+            docstore=InMemoryDocstore(),
+            index_to_docstore_id={},
+        )
+    
+    vector_store.add_documents(documents=docs_chunks)
+    vector_store.save_local(vector_store_path)
+    return vector_store
