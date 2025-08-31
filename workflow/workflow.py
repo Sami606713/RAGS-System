@@ -43,8 +43,8 @@ def create_workflow():
     workflow.add_edge("Query Expansion", "Doc ReOrdering")
     workflow.add_edge("Query Decomposition", "Doc ReOrdering")
 
-    workflow.add_edge("Doc ReOrdering", "ReRanking")
-    workflow.add_edge("ReRanking", "Generator")
+    # workflow.add_edge("Doc ReOrdering", "ReRanking")
+    workflow.add_edge("Doc ReOrdering", "Generator")
 
     workflow.add_edge("Generator",END)
 

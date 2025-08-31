@@ -1,8 +1,8 @@
-Charting-a-Greener-Course-Embrace-CCS-on-Maritime-Vessels.extraction.md
-Cheat Sheet Hydrogen (1).extraction.md
-Clean Energy Market Analysis in the US.extraction.md
-Clean investment US.extraction.md
-Comparative Life Cycle Assessment of Bioethanol Production from Different Generations ofBiomass and Waste Feedstocks.extraction.md
-Fuels Comparison.extraction.md
-Green conversion of municipal solid wastes into fuels and chemicals.extraction.md
-Waste to Fuel in NY.extraction.md
+Charting-a-Greener-Course-Embrace-CCS-on-Maritime-Vessels.json
+Cheat Sheet Hydrogen (1).json
+Clean Energy Market Analysis in the US.json
+Clean investment US.json
+Comparative Life Cycle Assessment of Bioethanol Production from Different Generations ofBiomass and Waste Feedstocks.json
+fuel_comparison.json
+Green conversion of municipal solid wastes into fuels and chemicals.extraction.json
+Waste to Fuel in NY.extraction.json

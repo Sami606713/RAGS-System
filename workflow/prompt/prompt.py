@@ -9,44 +9,25 @@ def generator_prompt() -> ChatPromptTemplate:
     """
     return ChatPromptTemplate.from_template(
     """
-You are a knowledgeable and professional technical assistant.  
-Your task is to generate a well-structured, clear, and professional answer **strictly based** on the provided context.
+You are an AI Assistant specialized in context-grounded Q&A.
+Your job is to provide accurate, clear, and concise answers to user questions based strictly on the given context.
 
-### Response Guidelines
+Rules:
+1. Use only the provided context (chunks + references).
+   - Do not invent or hallucinate details.
+   - If the context does not contain an answer, reply with exactly:
+     I do not know
+2. Answer Style:
+   - Provide a direct answer first.
+   - Support it with evidence from the context (bullet points, comparisons, pros/cons).
+   - End with a short summary or recommendation.
+3. Include references by citing the provided document sources.
+4. Use structured formatting (headings, bullets, ✅ for summary) to make the response easy to follow.
 
-1. **Structure & Professionalism**:  
-   - Present the answer in full, cohesive paragraphs.  
-   - Use headings and subheadings where appropriate to organize ideas.  
-   - Maintain a logical flow, similar to a professional report or technical article.  
-   - Use bullet points only when summarizing lists or highlighting key points.  
-   - When presenting structured comparisons, metrics, or categorical information, use a table format.  
-   - If tables are not relevant, skip them.  
+User Question:
+{question}
 
-2. **Readability & Tone**:  
-   - Write in a natural, professional, and conversational style.  
-   - Ensure the answer is easy to read and free from unnecessary jargon.  
-   - Expand on ideas where needed so the response feels complete and polished.  
-
-3. **Completeness**:  
-   - Always provide the most relevant answer possible based on the given context.  
-   - Do not say "I don’t know." Instead, focus on what can be answered from the context and present it in a useful way.  
-
-4. **References**:  
-   - At the end of the answer, include a **References** section.  
-   - List only unique source identifiers from the provided context that end with `.pdf`.  
-   - If there are no `.pdf` sources, write: References: None  
-
----
-
-**Context:**  
-{combined_context}  
-
-**Sources:**  
-{sources}  
-
-**Question:**  
-{query}  
-
-### Answer:
+Context (Chunks + References):
+{combined_context}
 """
 )

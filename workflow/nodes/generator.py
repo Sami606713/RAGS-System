@@ -1,38 +1,33 @@
 from workflow.states.states import AgentState
 from workflow.prompt.prompt import generator_prompt
 from workflow.models.loadModel import load_model
+from workflow.utils.helper import format_context
+
+
 def generate_answer(state: AgentState):
+    """
+    Generate structured academic-style answers based on reranked context.
+    """
     try:
         print("Ans Generation")
-        updated_context = state['context']
-        query = state['rewrite_question']
-        sources = state['sources']
+        context = state['context']
+        query = state['question']
 
-        sources_str = ", ".join(sources)
-        # Combine documents into a structured block
-        print("Combining..")
-        combined_context = "\n\n".join([
-            f"""
-**Summary**: {doc.metadata.get('summary', 'N/A')}
+        print("Formatting context...")
+        combined_context = format_context(context)
+        print("Formatting Done..")
 
-{doc.page_content.strip()}
-""" for doc in updated_context
-        ])
-
-        print("Combined Context: ", combined_context)
-        # Prompt template (cleaner, more guided)
+        # Prompt template
         prompt = generator_prompt().format(
-            query=query,
-            combined_context=combined_context,
-            sources=sources_str
+            question=query,
+            combined_context=combined_context
         )
-        # Generate the answer
-        answer = load_model().invoke(prompt)
 
-        return {
-            'answer': answer.content
-        }
+        answer = load_model().invoke(prompt)
+        print("Answer Generated")
+
+        return {'answer': answer.content}
 
     except Exception as e:
         print("Error in answer generation:", str(e))
-        return str(e)
+        return {'error': str(e)}

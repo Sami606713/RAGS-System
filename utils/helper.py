@@ -1,10 +1,13 @@
-from unstructured.partition.pdf import partition_pdf
+# from unstructured.partition.pdf import partition_pdf
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_community.retrievers import BM25Retriever
 from typing import List
 from langchain.schema import Document
+from langchain_openai import ChatOpenAI
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -20,34 +23,34 @@ def get_images_base64(chunks):
     return images_b64
 
 
-def LoadAndExtractData(file_path):
-    try:
-        tables = []
-        texts = []
-        print(">> Extracting Data")
-        data = partition_pdf(
-            filename=file_path,
-            infer_table_structure=True,
-            extract_image_block_types=["Image"],
-            extract_image_block_to_payload=True,
-            chunking_strategy="by_title",
-            max_characters=10000,
-            combine_text_under_n_chars=2000,
-            new_after_n_chars=6000,
-        )
-        print(">> Extracting Text and tables...")
-        for chunk in data:
-            if "Table" in str(type(chunk)):
-                tables.append(chunk)
-            if "CompositeElement" in str(type((chunk))):
-                texts.append(chunk)
-        print(">> Chunks are: ", data)
-        print(">> Extracting Images...")
-        images = get_images_base64(data)
-        return tables, texts, images
-    except Exception as e:
-        print("Error is: ", str(e))
-        return [], [], str(e)
+# def LoadAndExtractData(file_path):
+#     try:
+#         tables = []
+#         texts = []
+#         print(">> Extracting Data")
+#         data = partition_pdf(
+#             filename=file_path,
+#             infer_table_structure=True,
+#             extract_image_block_types=["Image"],
+#             extract_image_block_to_payload=True,
+#             chunking_strategy="by_title",
+#             max_characters=10000,
+#             combine_text_under_n_chars=2000,
+#             new_after_n_chars=6000,
+#         )
+#         print(">> Extracting Text and tables...")
+#         for chunk in data:
+#             if "Table" in str(type(chunk)):
+#                 tables.append(chunk)
+#             if "CompositeElement" in str(type((chunk))):
+#                 texts.append(chunk)
+#         print(">> Chunks are: ", data)
+#         print(">> Extracting Images...")
+#         images = get_images_base64(data)
+#         return tables, texts, images
+#     except Exception as e:
+#         print("Error is: ", str(e))
+#         return [], [], str(e)
     
 
 
@@ -91,6 +94,54 @@ def Summarizer(prompt_template, data, config=True, set_messages=False):
             return summarize_chain.batch(data)
     except Exception as e:
         return str(e)
+
+
+
+def summarize_docs(docs, model_name="gpt-4o-mini"):
+    """
+    Summarize a list of Document objects section-wise.
+    
+    Args:
+        docs: List of langchain Document objects (e.g., from MarkdownHeaderTextSplitter)
+        model_name: LLM to use for summarization (default gpt-4o-mini)
+    
+    Returns:
+        summaries: List of dicts with {metadata, summary}
+    """
+    # Define a simple summarization prompt
+    prompt_template = """
+    You are an expert summarizer.
+
+    Task:
+    - If the input is a **section** → produce a concise summary (3–5 bullet points).
+    - If the input is a **full document** → produce a structured summary with short paragraphs (not exceeding 200 words total).
+
+    Guidelines:
+    - Focus only on the main ideas.
+    - Remove redundancy.
+    - Do not copy sentences directly; paraphrase concisely.
+    - Output should be easy to skim.
+
+    Content:
+    {text}
+
+    Summary:
+    """
+    prompt = PromptTemplate(input_variables=["text"], template=prompt_template)
+
+    # Initialize LLM
+    llm = ChatOpenAI(model=model_name, temperature=0)
+    chain = LLMChain(llm=llm, prompt=prompt)
+
+    summaries = []
+    for doc in docs:
+        summary = chain.run(text=doc.page_content)
+        summaries.append({
+            "metadata": doc.metadata,
+            "summary": summary.strip()
+        })
+    
+    return summaries
 
 
 def Query_Optimizer(query):

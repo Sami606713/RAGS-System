@@ -13,4 +13,5 @@ memory.db
 pyproject.lock
 pyproject.toml
 uv.lock
+docs/
 test.py
