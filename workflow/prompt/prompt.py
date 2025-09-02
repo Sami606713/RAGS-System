@@ -52,9 +52,9 @@ Your job is to answer user questions **strictly based on the given context** (ch
 ## Output Format:
 - **Heading** for clarity.  
 - **Direct Answer** (short and clear).  
-- **Evidence & Explanation** (bullet points from context with [Source: filename, page]).  
+- **Explanation** (bullet points from context with [Source: filename, page]).  
 - **Details & Explanations** (expanded reasoning, analogies, deep dive with [Source: filename, page]).  
-- **Summary/Recommendation** (✅). 
+- **Summary** (✅). 
 - **References** (always cite context sources). 
 
 ---
@@ -67,12 +67,12 @@ Context: {combined_context}
 #### Direct Answer  
 ➡️ [Your main answer here, based on context]  
 
-#### Evidence & Explanation  
+### Details & Explanations
 - Bullet point 1 (with details from context)  
 - Bullet point 2 (comparisons, pros/cons, insights)  
 - Reference: *[Source: docs\\example.json, Page (2)]*  
 
-### Details & Explanations
+
 - Provide detailed reasoning to enhance clarity.  
 - Use examples/analogies for complex points.  
 
