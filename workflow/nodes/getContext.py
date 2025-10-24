@@ -17,4 +17,4 @@ def get_relevant_doc(state:AgentState)->AgentState:
         }
     except Exception as e:
         print("Error in answer generation:", str(e))
-        return str(e)
+        return {'error': str(e)}

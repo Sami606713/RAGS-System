@@ -1,0 +1,61 @@
+2025-10-11 12:19:40,773 - INFO - === Starting Enhanced Article Processing Pipeline ===
+2025-10-11 12:19:40,774 - INFO - Processing directory: docs
+2025-10-11 12:19:40,774 - INFO - Initializing source validation...
+2025-10-11 12:19:40,795 - INFO - Successfully registered 8 trusted sources
+2025-10-11 12:19:40,796 - INFO - Loading processed files log from: processFile3.txt
+2025-10-11 12:19:40,797 - INFO - Found 8 previously processed files
+2025-10-11 12:19:40,797 - INFO - Found 8 files in docs: ['Charting-a-Greener-Course-Embrace-CCS-on-Maritime-Vessels.json', 'Cheat Sheet Hydrogen (1).json', 'Clean Energy Market Analysis in the US.json', 'Clean investment US.json', 'Comparative Life Cycle Assessment of Bioethanol Production from Different Generations ofBiomass and Waste Feedstocks.json', 'fuel_comparison.json', 'Green conversion of municipal solid wastes into fuels and chemicals.extraction.json', 'Waste to Fuel in NY.extraction.json']
+2025-10-11 12:19:41,148 - INFO - Previously processed: 8 files
+2025-10-11 12:19:41,150 - ERROR - Failed to process Charting-a-Greener-Course-Embrace-CCS-on-Maritime-Vessels.json: cannot access local variable 'all_content' where it is not associated with a value
+Traceback (most recent call last):
+  File "D:\Emulxion.ai\Projects\Jerry-1\Project-1\RAGS-System\RAGS-System\main.py", line 168, in main
+    if all_content:
+       ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'all_content' where it is not associated with a value
+2025-10-11 12:19:41,153 - ERROR - Failed to process Cheat Sheet Hydrogen (1).json: cannot access local variable 'all_content' where it is not associated with a value
+Traceback (most recent call last):
+  File "D:\Emulxion.ai\Projects\Jerry-1\Project-1\RAGS-System\RAGS-System\main.py", line 168, in main
+    if all_content:
+       ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'all_content' where it is not associated with a value
+2025-10-11 12:19:41,155 - ERROR - Failed to process Clean Energy Market Analysis in the US.json: cannot access local variable 'all_content' where it is not associated with a value
+Traceback (most recent call last):
+  File "D:\Emulxion.ai\Projects\Jerry-1\Project-1\RAGS-System\RAGS-System\main.py", line 168, in main
+    if all_content:
+       ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'all_content' where it is not associated with a value
+2025-10-11 12:19:41,157 - ERROR - Failed to process Clean investment US.json: cannot access local variable 'all_content' where it is not associated with a value
+Traceback (most recent call last):
+  File "D:\Emulxion.ai\Projects\Jerry-1\Project-1\RAGS-System\RAGS-System\main.py", line 168, in main
+    if all_content:
+       ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'all_content' where it is not associated with a value
+2025-10-11 12:19:41,159 - ERROR - Failed to process Comparative Life Cycle Assessment of Bioethanol Production from Different Generations ofBiomass and Waste Feedstocks.json: cannot access local variable 'all_content' where it is not associated with a value
+Traceback (most recent call last):
+  File "D:\Emulxion.ai\Projects\Jerry-1\Project-1\RAGS-System\RAGS-System\main.py", line 168, in main
+    if all_content:
+       ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'all_content' where it is not associated with a value
+2025-10-11 12:19:41,161 - ERROR - Failed to process fuel_comparison.json: cannot access local variable 'all_content' where it is not associated with a value
+Traceback (most recent call last):
+  File "D:\Emulxion.ai\Projects\Jerry-1\Project-1\RAGS-System\RAGS-System\main.py", line 168, in main
+    if all_content:
+       ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'all_content' where it is not associated with a value
+2025-10-11 12:19:41,163 - ERROR - Failed to process Green conversion of municipal solid wastes into fuels and chemicals.extraction.json: cannot access local variable 'all_content' where it is not associated with a value
+Traceback (most recent call last):
+  File "D:\Emulxion.ai\Projects\Jerry-1\Project-1\RAGS-System\RAGS-System\main.py", line 168, in main
+    if all_content:
+       ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'all_content' where it is not associated with a value
+2025-10-11 12:19:41,166 - ERROR - Failed to process Waste to Fuel in NY.extraction.json: cannot access local variable 'all_content' where it is not associated with a value
+Traceback (most recent call last):
+  File "D:\Emulxion.ai\Projects\Jerry-1\Project-1\RAGS-System\RAGS-System\main.py", line 168, in main
+    if all_content:
+       ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'all_content' where it is not associated with a value
+2025-10-11 12:19:41,168 - INFO - === Pipeline Completion Summary ===
+2025-10-11 12:19:41,169 - INFO - Total files found: 8
+2025-10-11 12:19:41,169 - INFO - Successfully processed: 0
+2025-10-11 12:19:41,170 - INFO - Failed processing: 8
+2025-10-11 12:19:41,170 - INFO - Previously processed: 8

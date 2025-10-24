@@ -1,4 +1,8 @@
 # from unstructured.partition.pdf import partition_pdf
+import os
+import pypdf
+import json
+from io import BytesIO
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -23,35 +27,171 @@ def get_images_base64(chunks):
     return images_b64
 
 
-# def LoadAndExtractData(file_path):
-#     try:
-#         tables = []
-#         texts = []
-#         print(">> Extracting Data")
-#         data = partition_pdf(
-#             filename=file_path,
-#             infer_table_structure=True,
-#             extract_image_block_types=["Image"],
-#             extract_image_block_to_payload=True,
-#             chunking_strategy="by_title",
-#             max_characters=10000,
-#             combine_text_under_n_chars=2000,
-#             new_after_n_chars=6000,
-#         )
-#         print(">> Extracting Text and tables...")
-#         for chunk in data:
-#             if "Table" in str(type(chunk)):
-#                 tables.append(chunk)
-#             if "CompositeElement" in str(type((chunk))):
-#                 texts.append(chunk)
-#         print(">> Chunks are: ", data)
-#         print(">> Extracting Images...")
-#         images = get_images_base64(data)
-#         return tables, texts, images
-#     except Exception as e:
-#         print("Error is: ", str(e))
-#         return [], [], str(e)
-    
+def LoadAndExtractData(file_path):
+    try:
+        tables = []
+        texts = []
+        images = []
+        print(">> Extracting Data")
+
+        # Simple PDF text extraction using pypdf
+        with open(file_path, 'rb') as file:
+            pdf_reader = pypdf.PdfReader(file)
+            for page_num, page in enumerate(pdf_reader.pages):
+                text = page.extract_text()
+                if text.strip():
+                    texts.append(f"Page {page_num + 1}: {text.strip()}")
+
+        print(f">> Extracted {len(texts)} text pages")
+        print(">> Note: Table and image extraction temporarily disabled due to dependency issues")
+
+        return tables, texts, images
+    except Exception as e:
+        print("Error is: ", str(e))
+        return [], [], str(e)
+
+
+def LoadAndExtractDataFromJSON(file_path):
+    """
+    Enhanced extraction of article content from JSON files with improved chunking and metadata.
+
+    Optimized for article processing with better contextual preservation and semantic structure.
+
+    Args:
+        file_path: Path to the JSON file
+
+    Returns:
+        tuple: (tables, texts, images) where each contains structured content with metadata
+    """
+    try:
+        tables = []
+        texts = []
+        images = []
+        print(">> Extracting and processing article data from JSON")
+
+        with open(file_path, 'r', encoding='utf-8') as file:
+            data = json.load(file)
+
+        file_name = os.path.basename(file_path)
+
+        # Enhanced chunk processing with metadata preservation
+        if 'chunks' in data:
+            for i, chunk in enumerate(data['chunks']):
+                chunk_text = chunk.get('text', '').strip()
+                chunk_type = chunk.get('chunk_type', 'text')
+                chunk_id = chunk.get('chunk_id', f"chunk_{i}")
+
+                if not chunk_text:  # Skip empty chunks
+                    continue
+
+                # Create enhanced content structure
+                enhanced_content = {
+                    'content': chunk_text,
+                    'chunk_id': chunk_id,
+                    'chunk_type': chunk_type,
+                    'source_file': file_name,
+                    'metadata': chunk.get('grounding', [])  # Preserve positioning info
+                }
+
+                # Categorize content with better logic
+                if chunk_type in ['table', 'Table']:
+                    tables.append(enhanced_content)
+                elif chunk_type in ['figure', 'image', 'Figure', 'Image']:
+                    images.append(enhanced_content)
+                else:
+                    # For text chunks, add semantic context
+                    enhanced_content['semantic_type'] = _classify_text_type(chunk_text)
+                    texts.append(enhanced_content)
+
+        # Enhanced markdown processing with section detection
+        elif 'markdown' in data:
+            markdown_content = data['markdown']
+            sections = _split_markdown_into_sections(markdown_content, file_name)
+            texts.extend(sections)
+
+        print(f">> Successfully processed: {len(texts)} text sections, {len(tables)} tables, {len(images)} images")
+        return tables, texts, images
+
+    except Exception as e:
+        print(f"Error processing {file_path}: {str(e)}")
+        return [], [], []
+
+
+def _classify_text_type(text):
+    """Classify text content for better semantic understanding"""
+    text_lower = text.lower()
+
+    if any(keyword in text_lower for keyword in ['abstract', 'summary', 'overview']):
+        return 'abstract'
+    elif any(keyword in text_lower for keyword in ['introduction', 'background']):
+        return 'introduction'
+    elif any(keyword in text_lower for keyword in ['conclusion', 'findings', 'results']):
+        return 'conclusion'
+    elif any(keyword in text_lower for keyword in ['method', 'approach', 'technique']):
+        return 'methodology'
+    elif len(text) < 200:
+        return 'heading_or_caption'
+    else:
+        return 'content'
+
+
+def _split_markdown_into_sections(markdown_content, source_file):
+    """Split markdown content into logical sections for better retrieval"""
+    import re
+
+    sections = []
+
+    # Split by headers (# ## ###)
+    header_pattern = r'^(#{1,6})\s+(.+?)$'
+    lines = markdown_content.split('\n')
+
+    current_section = []
+    current_header = None
+    current_level = 0
+
+    for line in lines:
+        header_match = re.match(header_pattern, line)
+
+        if header_match:
+            # Save previous section if it has content
+            if current_section and any(l.strip() for l in current_section):
+                section_content = '\n'.join(current_section).strip()
+                if section_content:
+                    sections.append({
+                        'content': section_content,
+                        'chunk_id': f"section_{len(sections)}",
+                        'chunk_type': 'text',
+                        'source_file': source_file,
+                        'header': current_header,
+                        'header_level': current_level,
+                        'semantic_type': _classify_text_type(section_content),
+                        'metadata': []
+                    })
+
+            # Start new section
+            current_header = header_match.group(2).strip()
+            current_level = len(header_match.group(1))
+            current_section = [line]
+        else:
+            current_section.append(line)
+
+    # Add final section
+    if current_section and any(l.strip() for l in current_section):
+        section_content = '\n'.join(current_section).strip()
+        if section_content:
+            sections.append({
+                'content': section_content,
+                'chunk_id': f"section_{len(sections)}",
+                'chunk_type': 'text',
+                'source_file': source_file,
+                'header': current_header,
+                'header_level': current_level,
+                'semantic_type': _classify_text_type(section_content),
+                'metadata': []
+            })
+
+    return sections
+
 
 
 # Summarizer Function

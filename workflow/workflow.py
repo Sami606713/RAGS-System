@@ -3,7 +3,7 @@ from workflow.nodes.getContext import get_relevant_doc
 from workflow.nodes.reRanker import ReRanker
 from workflow.nodes.docReordering import ReOrderingDocument
 from workflow.nodes.queryDecomposer import query_decomposition
-from workflow.nodes.queryExpension import query_expansion
+from workflow.nodes.ragFusion import rag_fusion  # Updated: Use RAG Fusion instead
 from workflow.nodes.generator import generate_answer
 from workflow.nodes.queryUpdater import query_updater
 from workflow.Evulation.Evulaiton import evaluate_response
@@ -25,28 +25,14 @@ def create_workflow():
 
     # Add the nodes (using correct function/class names from imports)
     workflow.add_node("Query Rewriter", RunnableLambda(query_rewriter))
-    workflow.add_node("Get Context", RunnableLambda(get_relevant_doc))
-    workflow.add_node("Query Expansion", RunnableLambda(query_expansion))
-    workflow.add_node("Query Decomposition", RunnableLambda(query_decomposition))
-    workflow.add_node("Doc ReOrdering", RunnableLambda(ReOrderingDocument))
-    workflow.add_node("ReRanking", RunnableLambda(ReRanker))
+    workflow.add_node("RAG Fusion", RunnableLambda(rag_fusion))  # Updated: RAG Fusion node
     workflow.add_node("Generator", RunnableLambda(generate_answer))
 
-    # Define the edges
+    # Define the edges - Simplified workflow with RAG Fusion
     workflow.add_edge(START, "Query Rewriter")
-
-    workflow.add_edge("Query Rewriter", "Get Context")
-    workflow.add_edge("Query Rewriter", "Query Expansion")
-    workflow.add_edge("Query Rewriter", "Query Decomposition")
-
-    workflow.add_edge("Get Context", "Doc ReOrdering")
-    workflow.add_edge("Query Expansion", "Doc ReOrdering")
-    workflow.add_edge("Query Decomposition", "Doc ReOrdering")
-
-    # workflow.add_edge("Doc ReOrdering", "ReRanking")
-    workflow.add_edge("Doc ReOrdering", "Generator")
-
-    workflow.add_edge("Generator",END)
+    workflow.add_edge("Query Rewriter", "RAG Fusion")
+    workflow.add_edge("RAG Fusion", "Generator")
+    workflow.add_edge("Generator", END)
 
     # checkpointer = InMemorySaver()
 

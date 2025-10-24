@@ -19,6 +19,7 @@ from langchain_openai import ChatOpenAI
 # from langchain_voyageai import VoyageAIEmbeddings
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from uuid import uuid4
+from utils.sourceValidator import get_source_validator
 
 load_dotenv()
 # Initialize OpenAI embeddings
@@ -46,10 +47,39 @@ compressor = CohereRerank(model="rerank-english-v3.0",cohere_api_key =os.getenv(
 def add_to_vector_store(docs_chunks: List[Document], batch_size: int = 32, vector_store_path = "final_index2"):
     successful_docs = []
     failed_docs = []
+    rejected_docs = []
+
     try:
+        # Initialize source validator
+        source_validator = get_source_validator()
+
+        # Validate all documents before processing
+        validated_docs = []
+        for doc in docs_chunks:
+            if source_validator.validate_document_metadata(doc.metadata):
+                validated_docs.append(doc)
+            else:
+                rejected_docs.append(doc)
+                source = doc.metadata.get('source', 'Unknown')
+                print(f"🚫 REJECTED untrusted source: {source}")
+
+        if rejected_docs:
+            print(f"⚠️ Rejected {len(rejected_docs)} documents from untrusted sources")
+            print("✅ Only processing documents from verified trusted sources")
+
+        if not validated_docs:
+            print("❌ No trusted documents to process. All sources rejected.")
+            return {
+                "status": "failed",
+                "error": "All documents from untrusted sources",
+                "rejected_docs": len(rejected_docs)
+            }
+
         embeddings = get_embeddings()
-        print(f">> Starting embedding for {len(docs_chunks)} documents...\n")
-        if os.path.exists(vector_store_path):
+        print(f">> Starting embedding for {len(validated_docs)} validated documents...\n")
+        # Check if both the directory and index files exist
+        index_file = os.path.join(vector_store_path, "index.faiss")
+        if os.path.exists(vector_store_path) and os.path.exists(index_file):
             print(">> Loading the index <<")
             vector_store = FAISS.load_local(vector_store_path, embeddings, allow_dangerous_deserialization=True)
         else:
@@ -62,28 +92,30 @@ def add_to_vector_store(docs_chunks: List[Document], batch_size: int = 32, vecto
                 docstore=InMemoryDocstore(),
                 index_to_docstore_id={},
             )
-        uuids = [str(uuid4()) for _ in docs_chunks]
-        print(f"\n📦 Preparing to insert {len(docs_chunks)} documents into FAISS...\n")
-        for i in tqdm(range(0, len(docs_chunks), batch_size), desc="🔍 Embedding & Inserting", unit="batch"):
+        uuids = [str(uuid4()) for _ in validated_docs]
+        print(f"\n>> Preparing to insert {len(validated_docs)} validated documents into FAISS...\n")
+        for i in tqdm(range(0, len(validated_docs), batch_size), desc="Embedding & Inserting", unit="batch"):
             try:
-                batch_docs = docs_chunks[i:i+batch_size]
+                batch_docs = validated_docs[i:i+batch_size]
                 batch_ids = uuids[i:i+batch_size]
                 vector_store.add_documents(documents=batch_docs, ids=batch_ids)
                 successful_docs.extend(batch_docs)
             except Exception as e:
                 print(f"Error during batch insertion: {str(e)}")
-                failed_docs.extend(docs_chunks[i:i+batch_size])
+                failed_docs.extend(validated_docs[i:i+batch_size])
 
         vector_store.save_local(vector_store_path)
-        print("✅ Data insertion successful!\n")
-        print(f"📦 Successfully inserted {len(successful_docs)} documents.")
-        print(f"❌ Failed to insert {len(failed_docs)} documents.")
+        print(">> Data insertion successful!\n")
+        print(f">> Successfully inserted {len(successful_docs)} documents.")
+        print(f">> Failed to insert {len(failed_docs)} documents.")
         return {
             "status": "success",
             "vector_store": vector_store,
-            "num_documents": len(docs_chunks),
+            "num_documents": len(validated_docs),
             "successful_docs": len(successful_docs),
-            "failed_docs": len(failed_docs)
+            "failed_docs": len(failed_docs),
+            "rejected_docs": len(rejected_docs),
+            "total_input_docs": len(docs_chunks)
         }
     except Exception as e:
         print(f"Error in add_to_vector_store: {str(e)}")

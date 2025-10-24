@@ -1,0 +1,909 @@
+2025-10-11 12:30:38,989 - INFO - === Starting Enhanced Article Processing Pipeline ===
+2025-10-11 12:30:38,989 - INFO - Processing directory: docs
+2025-10-11 12:30:38,990 - INFO - Initializing source validation...
+2025-10-11 12:30:39,031 - INFO - Successfully registered 8 trusted sources
+2025-10-11 12:30:39,031 - INFO - Loading processed files log from: processed.txt
+2025-10-11 12:30:39,031 - INFO - No previous processing log found, starting fresh
+2025-10-11 12:30:39,032 - INFO - Found 8 files in docs: ['Charting-a-Greener-Course-Embrace-CCS-on-Maritime-Vessels.json', 'Cheat Sheet Hydrogen (1).json', 'Clean Energy Market Analysis in the US.json', 'Clean investment US.json', 'Comparative Life Cycle Assessment of Bioethanol Production from Different Generations ofBiomass and Waste Feedstocks.json', 'fuel_comparison.json', 'Green conversion of municipal solid wastes into fuels and chemicals.extraction.json', 'Waste to Fuel in NY.extraction.json']
+2025-10-11 12:30:39,033 - INFO - Previously processed: 0 files
+2025-10-11 12:30:39,033 - INFO - Starting processing: Charting-a-Greener-Course-Embrace-CCS-on-Maritime-Vessels.json
+2025-10-11 12:30:39,034 - INFO - Processing trusted source: Charting-a-Greener-Course-Embrace-CCS-on-Maritime-Vessels.json
+2025-10-11 12:30:39,034 - INFO - Extracting JSON content from: Charting-a-Greener-Course-Embrace-CCS-on-Maritime-Vessels.json
+2025-10-11 12:30:40,597 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:40,691 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:41,563 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:41,640 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:41,736 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:42,642 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:42,661 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:43,300 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:44,433 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:45,228 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:45,947 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:45,967 - WARNING - Skipping corrupted content chunk: 946cc999-c597-4577-98bb-6aecd07af1f6
+2025-10-11 12:30:45,973 - WARNING - Skipping corrupted content chunk: b9c2d92d-3992-478e-8612-0bbbb8276548
+2025-10-11 12:30:45,974 - WARNING - Skipping corrupted content chunk: 989c3b2f-809a-495f-a8fc-435fd1a37b92
+2025-10-11 12:30:45,976 - WARNING - Skipping corrupted content chunk: 993d64d3-0ca9-4105-908c-6804acbf0c71
+2025-10-11 12:30:45,983 - INFO - Chunking validation - Quality score: 1.00, Facts preserved: 0, Facts lost: 0
+2025-10-11 12:30:45,983 - INFO - Adding processed chunks to vector store
+2025-10-11 12:30:47,754 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-10-11 12:30:48,076 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-10-11 12:30:48,181 - INFO - Successfully processed: Charting-a-Greener-Course-Embrace-CCS-on-Maritime-Vessels.json
+2025-10-11 12:30:48,181 - INFO - Content breakdown - Text: 8, Tables: 0, Images: 3
+2025-10-11 12:30:48,181 - INFO - Generated 7 final chunks for vector store
+2025-10-11 12:30:48,181 - INFO - Starting processing: Cheat Sheet Hydrogen (1).json
+2025-10-11 12:30:48,181 - INFO - Processing trusted source: Cheat Sheet Hydrogen (1).json
+2025-10-11 12:30:48,182 - INFO - Extracting JSON content from: Cheat Sheet Hydrogen (1).json
+2025-10-11 12:30:49,345 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:51,841 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:53,058 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:53,159 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:53,249 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:53,956 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:53,962 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:54,367 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:54,694 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:55,129 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:55,886 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:56,009 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:56,376 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:57,523 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:57,797 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:30:59,773 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:00,117 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:00,620 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:02,338 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:03,481 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:03,500 - WARNING - Skipping corrupted content chunk: 280300c0-ad14-45ee-8550-466459792066
+2025-10-11 12:31:03,503 - WARNING - Skipping corrupted content chunk: 86d2a17d-3492-45a8-b242-7cd5db915af0
+2025-10-11 12:31:03,504 - WARNING - Skipping corrupted content chunk: 20b75a95-e7ad-417f-a5f9-2109d72da8a9
+2025-10-11 12:31:03,506 - WARNING - Skipping corrupted content chunk: 461d2e6b-5eb7-4dcf-874f-13c7435858a5
+2025-10-11 12:31:03,507 - WARNING - Skipping corrupted content chunk: a119ee0e-6b53-48d2-bb65-db023613c754
+2025-10-11 12:31:03,508 - WARNING - Skipping corrupted content chunk: 584383c1-aa86-46cc-845d-59025bc49b3c
+2025-10-11 12:31:03,509 - WARNING - Skipping corrupted content chunk: 96f340f4-d83f-4ee6-ba14-d5fa590371f7
+2025-10-11 12:31:03,510 - WARNING - Skipping corrupted content chunk: 2672d6d9-ebf5-4dcb-8525-741122afe885
+2025-10-11 12:31:03,522 - INFO - Chunking validation - Quality score: 1.00, Facts preserved: 18, Facts lost: 0
+2025-10-11 12:31:03,523 - INFO - Adding processed chunks to vector store
+2025-10-11 12:31:05,410 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-10-11 12:31:05,618 - INFO - Successfully processed: Cheat Sheet Hydrogen (1).json
+2025-10-11 12:31:05,618 - INFO - Content breakdown - Text: 15, Tables: 0, Images: 5
+2025-10-11 12:31:05,618 - INFO - Generated 12 final chunks for vector store
+2025-10-11 12:31:05,619 - INFO - Starting processing: Clean Energy Market Analysis in the US.json
+2025-10-11 12:31:05,620 - INFO - Processing trusted source: Clean Energy Market Analysis in the US.json
+2025-10-11 12:31:05,620 - INFO - Extracting JSON content from: Clean Energy Market Analysis in the US.json
+2025-10-11 12:31:06,863 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:07,375 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:07,376 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:08,408 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:08,648 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:08,981 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:09,981 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:10,057 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:11,287 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:11,976 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:12,026 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:13,744 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:14,491 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:14,828 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:15,008 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:16,044 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:16,174 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:17,365 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:18,113 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:18,746 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:19,216 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:19,441 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:19,904 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:20,873 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:21,349 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:21,497 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:21,992 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:22,511 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:23,536 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:24,172 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:24,686 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:25,035 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:25,702 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:26,222 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:26,342 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:27,204 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:28,401 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:28,503 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:28,605 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:29,827 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:30,559 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:31,658 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:31,801 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:32,278 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:32,743 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:32,811 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:33,114 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:34,135 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:34,566 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:35,989 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:36,785 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:37,458 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:37,729 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:39,038 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:39,185 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:39,597 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:41,060 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:41,906 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:43,927 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:44,861 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:46,387 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:47,048 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:48,846 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:48,904 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:49,361 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:51,343 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:51,344 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:51,914 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:53,050 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:53,362 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:53,875 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:55,291 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:55,349 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:55,377 - WARNING - Skipping corrupted content chunk: a6db9f3f-fdf5-4de4-94d1-c0c82e60630a
+2025-10-11 12:31:55,378 - WARNING - Skipping corrupted content chunk: 6b0f5a90-d134-429b-aeb9-c88ec35af28b
+2025-10-11 12:31:55,380 - WARNING - Skipping corrupted content chunk: 25c4a811-d48a-4cfa-9c11-b7ddacf06aed
+2025-10-11 12:31:55,381 - WARNING - Skipping corrupted content chunk: 7b95cbd5-14bb-42ea-a595-e36e9409146b
+2025-10-11 12:31:55,383 - WARNING - Skipping corrupted content chunk: 385d59c0-28e1-4b40-b2a0-ab281192b72c
+2025-10-11 12:31:55,385 - WARNING - Skipping corrupted content chunk: a20e0743-c0af-4257-ac55-9593c0a537cf
+2025-10-11 12:31:55,387 - WARNING - Skipping corrupted content chunk: 05fd12de-35c2-4009-8a66-76d17d621496
+2025-10-11 12:31:55,391 - WARNING - Skipping corrupted content chunk: 35266de9-5334-436e-b80e-f3114f41e083
+2025-10-11 12:31:55,394 - WARNING - Skipping corrupted content chunk: 614eab85-f255-4b96-be8a-540aeb47a3b5
+2025-10-11 12:31:55,397 - WARNING - Skipping corrupted content chunk: 70fdd5c3-6ee3-406d-93d7-e606f6a1daa3
+2025-10-11 12:31:55,397 - WARNING - Skipping corrupted content chunk: 2047b02a-2505-4cf8-9a76-1065f6293ee0
+2025-10-11 12:31:55,399 - WARNING - Skipping corrupted content chunk: a52b317c-d516-468a-b56a-7734baa3ab8b
+2025-10-11 12:31:55,400 - WARNING - Skipping corrupted content chunk: 628e9205-8c85-45d3-aed3-2c78f8f00f24
+2025-10-11 12:31:55,403 - WARNING - Skipping corrupted content chunk: 9569c4a2-e077-447f-a0ff-d4f67ad0c81a
+2025-10-11 12:31:55,405 - WARNING - Skipping corrupted content chunk: 7b303eb3-6797-427d-a699-71b236adc8ec
+2025-10-11 12:31:55,408 - WARNING - Skipping corrupted content chunk: 54449a0a-9bf4-4eb9-aa08-6c5f16661e8c
+2025-10-11 12:31:55,408 - WARNING - Skipping corrupted content chunk: a67ec8d4-66bd-4566-bd5b-e8fb3b41163b
+2025-10-11 12:31:55,409 - WARNING - Skipping corrupted content chunk: cadc0db0-65ef-45f7-b7aa-5be3659c7daf
+2025-10-11 12:31:55,411 - WARNING - Skipping corrupted content chunk: ac689b1c-4c98-4dd4-9ec2-554435c6d7e5
+2025-10-11 12:31:55,412 - WARNING - Skipping corrupted content chunk: e96a62d9-7ce1-4962-a397-ac3a55144d41
+2025-10-11 12:31:55,414 - WARNING - Skipping corrupted content chunk: 310d9e7c-150d-4e48-aae4-d3237f322ac2
+2025-10-11 12:31:55,416 - WARNING - Skipping corrupted content chunk: d8bee1b6-94a2-4496-bdfc-3a01f1287149
+2025-10-11 12:31:55,416 - WARNING - Skipping corrupted content chunk: ceeb9a79-7dce-41c5-bcf9-dd1dfc752f30
+2025-10-11 12:31:55,417 - WARNING - Skipping corrupted content chunk: 4a111079-c1a2-4f15-99c8-b65d3ce2cd92
+2025-10-11 12:31:55,419 - WARNING - Skipping corrupted content chunk: 7e17d455-ff59-4492-a87e-98e0161a1469
+2025-10-11 12:31:55,419 - WARNING - Skipping corrupted content chunk: 0ed2ea8c-9eb4-43a1-85a3-2ca4d5764e16
+2025-10-11 12:31:55,420 - WARNING - Skipping corrupted content chunk: 2e19216e-3766-4a50-a616-e65209f1621b
+2025-10-11 12:31:55,420 - WARNING - Skipping corrupted content chunk: b19523fa-26f5-4098-a2b9-2b41879dd187
+2025-10-11 12:31:55,422 - WARNING - Skipping corrupted content chunk: c9056447-7b1d-4669-8219-659eac657900
+2025-10-11 12:31:55,423 - WARNING - Skipping corrupted content chunk: 7d12030e-ec06-48a1-b40b-9917ab3c77e4
+2025-10-11 12:31:55,424 - WARNING - Skipping corrupted content chunk: 32e25222-7285-4a2c-9c2e-185b62aaea1f
+2025-10-11 12:31:55,424 - WARNING - Skipping corrupted content chunk: b853d925-a775-4bb1-8426-ce0a18fa4115
+2025-10-11 12:31:55,425 - WARNING - Skipping corrupted content chunk: e3f810c9-224e-4e4f-b3ea-4295bf3150dd
+2025-10-11 12:31:55,426 - WARNING - Skipping corrupted content chunk: 400ceb58-2f09-4b55-921e-c3d7e5ed9060
+2025-10-11 12:31:55,427 - WARNING - Skipping corrupted content chunk: 21fe1c22-64be-4ab1-b48f-a29d6ff35702
+2025-10-11 12:31:55,428 - WARNING - Skipping corrupted content chunk: 3068d594-b6e2-4e4e-9c83-c7762271085e
+2025-10-11 12:31:55,430 - WARNING - Skipping corrupted content chunk: 0a9fe9e3-9407-487d-9428-452f58dad85b
+2025-10-11 12:31:55,431 - WARNING - Skipping corrupted content chunk: 836fab31-535b-4537-a394-dbbab34860e2
+2025-10-11 12:31:55,434 - WARNING - Skipping corrupted content chunk: 4a5c9a34-4335-48c0-a31b-db14dcc2a1e5
+2025-10-11 12:31:55,435 - WARNING - Skipping corrupted content chunk: 8dc9ecff-6874-4000-a157-ba5f7b4f4938
+2025-10-11 12:31:55,437 - WARNING - Skipping corrupted content chunk: d20d2c23-3060-4bf7-98e8-10e9978c3e88
+2025-10-11 12:31:55,438 - WARNING - Skipping corrupted content chunk: 8d06aa41-fe3e-4954-8e04-c553138c042f
+2025-10-11 12:31:55,442 - WARNING - Skipping corrupted content chunk: 79cd1ab5-99e1-4c76-a43b-b1a49d8402e9
+2025-10-11 12:31:55,442 - WARNING - Skipping corrupted content chunk: 65312127-ec9c-4411-ae5f-646a777e12b4
+2025-10-11 12:31:55,444 - WARNING - Skipping corrupted content chunk: e05962fc-7796-414f-8b8f-be81927019a1
+2025-10-11 12:31:55,445 - WARNING - Skipping corrupted content chunk: c627afa5-be15-4380-9a55-663fe8ace757
+2025-10-11 12:31:55,445 - WARNING - Skipping corrupted content chunk: 3621f281-56a2-4d22-bbb7-a189858a20fe
+2025-10-11 12:31:55,446 - WARNING - Skipping corrupted content chunk: 571f0c01-f763-4bc2-b27f-4806ba9576a5
+2025-10-11 12:31:55,447 - WARNING - Skipping corrupted content chunk: f4016046-4514-471c-8d9a-b91560a122fa
+2025-10-11 12:31:55,447 - WARNING - Skipping corrupted content chunk: 25db309f-6f62-4a1f-b4bf-f81d3fa1ad4f
+2025-10-11 12:31:55,465 - INFO - Chunking validation - Quality score: 1.00, Facts preserved: 0, Facts lost: 0
+2025-10-11 12:31:55,467 - INFO - Adding processed chunks to vector store
+2025-10-11 12:31:57,589 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-10-11 12:31:57,800 - INFO - Successfully processed: Clean Energy Market Analysis in the US.json
+2025-10-11 12:31:57,801 - INFO - Content breakdown - Text: 56, Tables: 0, Images: 17
+2025-10-11 12:31:57,801 - INFO - Generated 23 final chunks for vector store
+2025-10-11 12:31:57,801 - INFO - Starting processing: Clean investment US.json
+2025-10-11 12:31:57,802 - INFO - Processing trusted source: Clean investment US.json
+2025-10-11 12:31:57,802 - INFO - Extracting JSON content from: Clean investment US.json
+2025-10-11 12:31:58,535 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:58,755 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:58,959 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:31:59,514 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:01,858 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:01,871 - WARNING - Skipping corrupted content chunk: 757a04d7-d4b7-4f2f-948f-c42305ea3e08
+2025-10-11 12:32:01,873 - WARNING - Skipping corrupted content chunk: 7248a944-c386-405e-9010-713b4db3d768
+2025-10-11 12:32:01,874 - INFO - Chunking validation - Quality score: 1.00, Facts preserved: 0, Facts lost: 0
+2025-10-11 12:32:01,874 - INFO - Adding processed chunks to vector store
+2025-10-11 12:32:03,589 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-10-11 12:32:03,593 - INFO - Successfully processed: Clean investment US.json
+2025-10-11 12:32:03,594 - INFO - Content breakdown - Text: 4, Tables: 0, Images: 1
+2025-10-11 12:32:03,594 - INFO - Generated 2 final chunks for vector store
+2025-10-11 12:32:03,594 - INFO - Starting processing: Comparative Life Cycle Assessment of Bioethanol Production from Different Generations ofBiomass and Waste Feedstocks.json
+2025-10-11 12:32:03,595 - INFO - Processing trusted source: Comparative Life Cycle Assessment of Bioethanol Production from Different Generations ofBiomass and Waste Feedstocks.json
+2025-10-11 12:32:03,595 - INFO - Extracting JSON content from: Comparative Life Cycle Assessment of Bioethanol Production from Different Generations ofBiomass and Waste Feedstocks.json
+2025-10-11 12:32:04,464 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:04,811 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:05,663 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:06,753 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:07,070 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:08,723 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:09,481 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:10,504 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:10,738 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:12,087 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:12,673 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:12,911 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:13,581 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:14,132 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:14,929 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:15,089 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:15,469 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:16,809 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:17,022 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:17,530 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:18,559 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:19,331 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:19,519 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:19,967 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:20,245 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:21,673 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:21,949 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:23,823 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:24,561 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:24,877 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:25,794 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:26,550 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:27,935 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:29,069 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:29,520 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:29,907 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:30,652 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:31,865 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:32,422 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:32,744 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:33,639 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:34,334 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:35,644 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:35,994 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:36,860 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:36,949 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:37,519 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:38,720 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:38,931 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:39,775 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:40,684 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:41,521 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:41,941 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:42,030 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:42,894 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:44,714 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:45,169 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:47,143 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:47,629 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:48,798 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:50,050 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:50,460 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:51,011 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:51,039 - WARNING - Skipping corrupted content chunk: 9582d61e-5402-4fab-8607-9252ccde84c6
+2025-10-11 12:32:51,040 - WARNING - Skipping corrupted content chunk: 3d7798a2-de3f-43ee-ae6c-d8c19be69e01
+2025-10-11 12:32:51,041 - WARNING - Skipping corrupted content chunk: 3dc24eed-eebf-4bde-9fd0-d91455758300
+2025-10-11 12:32:51,041 - WARNING - Skipping corrupted content chunk: bf55851b-cbee-4747-b3c0-327ec2d89154
+2025-10-11 12:32:51,042 - WARNING - Skipping corrupted content chunk: ec98146f-9d83-45bc-a3b5-1ab61d46c8a5
+2025-10-11 12:32:51,043 - WARNING - Skipping corrupted content chunk: ddd9fdd0-5986-4e50-9c06-f7dc39521486
+2025-10-11 12:32:51,045 - WARNING - Skipping corrupted content chunk: 244d5012-b020-4a7e-a504-4e1a9b5ddce0
+2025-10-11 12:32:51,046 - WARNING - Skipping corrupted content chunk: fc73588d-1131-41e5-8049-a4007112c669
+2025-10-11 12:32:51,046 - WARNING - Skipping corrupted content chunk: b73957d6-e378-41ad-a069-378317a299ec
+2025-10-11 12:32:51,047 - WARNING - Skipping corrupted content chunk: 39527402-12f2-475b-ba7e-d8c11bd07529
+2025-10-11 12:32:51,048 - WARNING - Skipping corrupted content chunk: 79cf0a9d-6088-4bc5-9b24-c3946f77f397
+2025-10-11 12:32:51,049 - WARNING - Skipping corrupted content chunk: 924e753c-3f86-47f6-a2e2-d9ce297a01f0
+2025-10-11 12:32:51,050 - WARNING - Skipping corrupted content chunk: f52ccb9e-df9e-4cfb-bf6b-17d5ba7f0c79
+2025-10-11 12:32:51,050 - WARNING - Skipping corrupted content chunk: f934f709-50ea-42ac-b492-e5477cec9fde
+2025-10-11 12:32:51,051 - WARNING - Skipping corrupted content chunk: 5f572d09-244e-4c13-9a1e-9f081875ef32
+2025-10-11 12:32:51,053 - WARNING - Skipping corrupted content chunk: 3dad7b13-2677-4470-ad4b-dc33bd72d920
+2025-10-11 12:32:51,054 - WARNING - Skipping corrupted content chunk: 93e31042-82e2-41e4-bec2-561701b8ad4e
+2025-10-11 12:32:51,055 - WARNING - Skipping corrupted content chunk: 9f6ce931-a165-482e-87e6-c7c5ec1d7b07
+2025-10-11 12:32:51,055 - WARNING - Skipping corrupted content chunk: 04c3d4b5-1da8-40ed-9913-96dd25ccdb25
+2025-10-11 12:32:51,056 - WARNING - Skipping corrupted content chunk: efe053ac-9ca5-4884-bf9d-384a9d72c0c6
+2025-10-11 12:32:51,057 - WARNING - Skipping corrupted content chunk: d125c5d4-f7d1-4d41-9c12-b3c8211a0172
+2025-10-11 12:32:51,058 - WARNING - Skipping corrupted content chunk: bbfe3c09-af18-4ad2-ab72-e9c26e5ec15e
+2025-10-11 12:32:51,059 - WARNING - Skipping corrupted content chunk: cbc948f2-0ae8-4226-8101-7ea64fb9d6fc
+2025-10-11 12:32:51,059 - WARNING - Skipping corrupted content chunk: 3df600f1-0a16-4bf4-a30d-24ef16309f53
+2025-10-11 12:32:51,060 - WARNING - Skipping corrupted content chunk: f7682dcc-1ef9-419a-8dcd-13e2ce4a7b1e
+2025-10-11 12:32:51,061 - WARNING - Skipping corrupted content chunk: cfa3d8d2-1d32-4b60-a708-df4faa7c0960
+2025-10-11 12:32:51,062 - WARNING - Skipping corrupted content chunk: 1b2aa726-8825-43c4-b8e9-44ee1aca6b69
+2025-10-11 12:32:51,062 - WARNING - Skipping corrupted content chunk: f8b70ab2-18b4-491b-aff9-243b945ff58a
+2025-10-11 12:32:51,064 - WARNING - Skipping corrupted content chunk: 23c42399-a1df-483c-920d-cd6a2ef70d5b
+2025-10-11 12:32:51,070 - WARNING - Skipping corrupted content chunk: f189316d-3e43-40ea-bb6e-93b1c3b42dc1
+2025-10-11 12:32:51,071 - WARNING - Skipping corrupted content chunk: 568d4316-a54f-4fed-b7b2-288384efc156
+2025-10-11 12:32:51,075 - WARNING - Skipping corrupted content chunk: cfd33db6-0537-4367-94ee-72b04f21532c
+2025-10-11 12:32:51,076 - WARNING - Skipping corrupted content chunk: 03179837-f740-456d-ad3e-b7d4f00b01d6
+2025-10-11 12:32:51,077 - WARNING - Skipping corrupted content chunk: 7bd22860-27df-4184-a1f5-367bc00038c8
+2025-10-11 12:32:51,079 - WARNING - Skipping corrupted content chunk: 9ee7e087-c043-46e3-9e7e-b4cb8793a0b0
+2025-10-11 12:32:51,081 - WARNING - Skipping corrupted content chunk: 23b9fdef-d468-42c8-9b9b-5102ecd4b822
+2025-10-11 12:32:51,082 - WARNING - Skipping corrupted content chunk: b1aea05a-87df-4d91-85bc-60f6a9c4bb6e
+2025-10-11 12:32:51,091 - INFO - Chunking validation - Quality score: 1.00, Facts preserved: 0, Facts lost: 0
+2025-10-11 12:32:51,092 - INFO - Adding processed chunks to vector store
+2025-10-11 12:32:52,850 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-10-11 12:32:53,066 - INFO - Successfully processed: Comparative Life Cycle Assessment of Bioethanol Production from Different Generations ofBiomass and Waste Feedstocks.json
+2025-10-11 12:32:53,066 - INFO - Content breakdown - Text: 56, Tables: 2, Images: 5
+2025-10-11 12:32:53,066 - INFO - Generated 21 final chunks for vector store
+2025-10-11 12:32:53,066 - INFO - Starting processing: fuel_comparison.json
+2025-10-11 12:32:53,068 - INFO - Processing trusted source: fuel_comparison.json
+2025-10-11 12:32:53,068 - INFO - Extracting JSON content from: fuel_comparison.json
+2025-10-11 12:32:54,719 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:55,108 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:55,483 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:56,240 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:56,564 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:57,546 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:59,762 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:32:59,858 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:00,057 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:00,832 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:01,037 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:01,207 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:02,786 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:02,800 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:03,687 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:04,101 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:04,671 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:04,684 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:06,376 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:06,770 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:07,471 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:07,506 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:07,706 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:08,706 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:08,786 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:09,996 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:10,528 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:10,938 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:10,999 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:11,547 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:13,374 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:14,222 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:15,307 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:15,536 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:15,896 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:16,659 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:17,097 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:17,839 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:19,236 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:19,644 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:20,009 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:20,843 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:21,157 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:21,342 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:22,918 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:23,447 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:24,282 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:24,580 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:25,303 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:25,308 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:25,958 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:26,256 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:26,827 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:27,461 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:27,925 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:28,001 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:29,030 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:29,549 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:30,045 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:31,001 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:31,010 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:31,023 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:32,092 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:32,144 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:32,861 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:33,179 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:34,362 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:34,840 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:35,460 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:36,124 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:36,597 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:38,186 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:38,278 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:38,440 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:39,116 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:39,499 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:40,665 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:40,858 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:41,149 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:42,042 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:42,194 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:42,495 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:43,259 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:44,620 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:45,176 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:45,535 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:46,177 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:46,694 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:48,061 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:48,551 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:49,006 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:50,474 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:50,965 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:52,137 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:52,885 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:52,928 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:54,165 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:54,648 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:55,424 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:56,564 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:57,081 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:57,747 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:58,165 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:59,190 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:59,199 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:33:59,351 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:00,637 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:01,512 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:02,465 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:02,869 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:03,253 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:05,907 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:05,941 - WARNING - Skipping corrupted content chunk: 42633e40-7a1a-489e-8ea6-8f6f9e80281b
+2025-10-11 12:34:05,941 - WARNING - Skipping corrupted content chunk: ae380399-f407-4f46-a793-6b9fdadbd924
+2025-10-11 12:34:05,942 - WARNING - Skipping corrupted content chunk: f18d1196-c0e9-4402-9a6a-6eb332e6d18c
+2025-10-11 12:34:05,943 - WARNING - Skipping corrupted content chunk: d1be37c1-f2ba-4cb9-8c36-d5dce3c57e1f
+2025-10-11 12:34:05,945 - WARNING - Skipping corrupted content chunk: 64ccbce9-c326-4666-96c7-0360887e17be
+2025-10-11 12:34:05,946 - WARNING - Skipping corrupted content chunk: 337bd693-c43b-496e-acfc-e849a567742e
+2025-10-11 12:34:05,947 - WARNING - Skipping corrupted content chunk: 6984708a-5c0f-4249-9c44-241895ea264b
+2025-10-11 12:34:05,947 - WARNING - Skipping corrupted content chunk: 8744b5fc-91c1-4517-a1f9-7e61c5b53d95
+2025-10-11 12:34:05,947 - WARNING - Skipping corrupted content chunk: 03707dde-5df1-4598-bdde-f5321031321a
+2025-10-11 12:34:05,948 - WARNING - Skipping corrupted content chunk: db4cdd81-f776-4e50-9ed6-5e66ed75276f
+2025-10-11 12:34:05,949 - WARNING - Skipping corrupted content chunk: 109ca6d5-91ee-49c6-95d3-eba3d6f79655
+2025-10-11 12:34:05,949 - WARNING - Skipping corrupted content chunk: b626ea2c-ef5c-467b-ade4-c18b9ffc0b2c
+2025-10-11 12:34:05,950 - WARNING - Skipping corrupted content chunk: 29ce3e8a-6e74-4700-bff1-cf57315e94bd
+2025-10-11 12:34:05,950 - WARNING - Skipping corrupted content chunk: 7cdcfb09-99bc-4c0b-9b41-dd5141e8c6d6
+2025-10-11 12:34:05,951 - WARNING - Skipping corrupted content chunk: b8f24d20-9e5f-4fea-9942-9186b3d9736b
+2025-10-11 12:34:05,952 - WARNING - Skipping corrupted content chunk: d5a90ea8-c509-4a17-b63b-8d07397007fd
+2025-10-11 12:34:05,952 - WARNING - Skipping corrupted content chunk: 6b39b0fb-82bb-4d3e-a6ef-8ab722969f19
+2025-10-11 12:34:05,953 - WARNING - Skipping corrupted content chunk: 2283c18f-a4db-47f6-9b51-470dd36c2248
+2025-10-11 12:34:05,954 - WARNING - Skipping corrupted content chunk: 348ac2e6-b8a4-4712-9e3d-e584f7395125
+2025-10-11 12:34:05,954 - WARNING - Skipping corrupted content chunk: bda625f6-b87c-47b0-9bf1-0b55da48cc6b
+2025-10-11 12:34:05,955 - WARNING - Skipping corrupted content chunk: f5628d71-cd63-4c4d-a545-3eb5df8f83ca
+2025-10-11 12:34:05,956 - WARNING - Skipping corrupted content chunk: 24b44af0-7546-4d14-80f4-a3015c783c6c
+2025-10-11 12:34:05,957 - WARNING - Skipping corrupted content chunk: 7754cd19-1079-42ca-9130-f16fc45ab350
+2025-10-11 12:34:05,958 - WARNING - Skipping corrupted content chunk: 2ad6f51e-1cef-4e91-aaf2-92d7cb02d104
+2025-10-11 12:34:05,959 - WARNING - Skipping corrupted content chunk: 6daf746f-9fa2-49ee-b401-d3966387ae17
+2025-10-11 12:34:05,961 - WARNING - Skipping corrupted content chunk: eecd9933-4c24-4ae6-b0a1-7172f0118970
+2025-10-11 12:34:05,962 - WARNING - Skipping corrupted content chunk: debeb172-7a23-4192-93b2-285adf9643b3
+2025-10-11 12:34:05,963 - WARNING - Skipping corrupted content chunk: c478dddb-84e7-4afa-bfca-ea32e0bab06f
+2025-10-11 12:34:05,964 - WARNING - Skipping corrupted content chunk: 465004f5-285e-4498-9d75-d587c158de69
+2025-10-11 12:34:05,964 - WARNING - Skipping corrupted content chunk: 7d82295b-9c95-4daf-b5f5-bbeb4a4ba676
+2025-10-11 12:34:05,965 - WARNING - Skipping corrupted content chunk: c119bc7e-6943-4186-84c9-770f0533cd33
+2025-10-11 12:34:05,966 - WARNING - Skipping corrupted content chunk: 51ad5063-77d6-4555-afb9-6b4c1889267b
+2025-10-11 12:34:05,966 - WARNING - Skipping corrupted content chunk: a5cae26a-178b-412c-b330-47ee74c7bcc2
+2025-10-11 12:34:05,967 - WARNING - Skipping corrupted content chunk: 1bb3402c-5821-4005-92fb-6dbca8076a4a
+2025-10-11 12:34:05,968 - WARNING - Skipping corrupted content chunk: c8b09e1f-1447-4a0b-a886-822dc360be40
+2025-10-11 12:34:05,968 - WARNING - Skipping corrupted content chunk: 85bcdcac-9319-46b9-9e4e-7801b90c1bde
+2025-10-11 12:34:05,968 - WARNING - Skipping corrupted content chunk: c2680e2d-3446-4ca9-b8d5-c9d45985f6b2
+2025-10-11 12:34:05,969 - WARNING - Skipping corrupted content chunk: f265933e-7d86-4286-8d93-fa63d3c4f0f6
+2025-10-11 12:34:05,970 - WARNING - Skipping corrupted content chunk: 5437eb3f-3fce-4074-bb02-d03b7bbd1c5e
+2025-10-11 12:34:05,970 - WARNING - Skipping corrupted content chunk: c62aba1c-365e-4bf1-aa85-4077ac47301b
+2025-10-11 12:34:05,971 - WARNING - Skipping corrupted content chunk: 37b1f910-40e8-4740-b5eb-706d56a1515d
+2025-10-11 12:34:05,972 - WARNING - Skipping corrupted content chunk: 24d2e853-8518-4ed7-a068-44079510ad1c
+2025-10-11 12:34:05,972 - WARNING - Skipping corrupted content chunk: 2ff3e1b4-0d89-4008-aee8-43b5299fdee6
+2025-10-11 12:34:05,974 - WARNING - Skipping corrupted content chunk: c69308f0-e1d8-46ea-a52a-0ccaef6922c1
+2025-10-11 12:34:05,974 - WARNING - Skipping corrupted content chunk: 81bd0b57-8dbb-4c3e-b062-ab3882b9d0e9
+2025-10-11 12:34:05,976 - WARNING - Skipping corrupted content chunk: 09f30268-7962-4cb2-9e87-eca6df963925
+2025-10-11 12:34:05,978 - WARNING - Skipping corrupted content chunk: 9ce9c7ee-a604-4dad-b22c-a61f6fa99025
+2025-10-11 12:34:05,980 - WARNING - Skipping corrupted content chunk: 215102e9-712a-4bf9-ba98-d473abe8d1ca
+2025-10-11 12:34:05,982 - WARNING - Skipping corrupted content chunk: a5be47ab-2d28-4203-abe3-8eca6fd43617
+2025-10-11 12:34:05,983 - WARNING - Skipping corrupted content chunk: a6d775f0-e664-4e1d-b063-f796ed155489
+2025-10-11 12:34:05,985 - WARNING - Skipping corrupted content chunk: 0493d7e2-848d-4de8-a910-a231781e1ea6
+2025-10-11 12:34:05,986 - WARNING - Skipping corrupted content chunk: 3548d1e6-26fd-4e72-8879-649616a50304
+2025-10-11 12:34:05,987 - WARNING - Skipping corrupted content chunk: 16f31693-d113-4f59-a9cc-870d806a00da
+2025-10-11 12:34:05,988 - WARNING - Skipping corrupted content chunk: f15694ea-52b4-46a4-baec-4b6943f58723
+2025-10-11 12:34:05,989 - WARNING - Skipping corrupted content chunk: 3c86480a-d9c9-44c9-aa69-9f754c43ad1a
+2025-10-11 12:34:05,989 - WARNING - Skipping corrupted content chunk: 091e6bf4-4ed1-4b0f-820a-f764e6d162eb
+2025-10-11 12:34:05,990 - WARNING - Skipping corrupted content chunk: 02996d8a-76d0-41fa-add3-ade5dd8ffeaf
+2025-10-11 12:34:05,991 - WARNING - Skipping corrupted content chunk: c8fca0d0-1674-4613-aee3-5a032e2aa099
+2025-10-11 12:34:05,992 - WARNING - Skipping corrupted content chunk: c8b60a09-bc76-463f-a91f-27315a62a965
+2025-10-11 12:34:05,993 - WARNING - Skipping corrupted content chunk: 9c2f1e9e-0c6d-45fc-a7d0-dd38a65ffd1c
+2025-10-11 12:34:05,996 - WARNING - Skipping corrupted content chunk: 65df857c-be7e-4606-94e2-236e0fbb8369
+2025-10-11 12:34:05,997 - WARNING - Skipping corrupted content chunk: e5570fb6-bf43-46e1-b395-fac99eb69b37
+2025-10-11 12:34:05,998 - WARNING - Skipping corrupted content chunk: 997b14b3-6c90-4287-8e33-57ddbf1661bf
+2025-10-11 12:34:05,998 - WARNING - Skipping corrupted content chunk: 713f93f0-7c6c-47d4-91cd-bbfce1d1ae18
+2025-10-11 12:34:05,999 - WARNING - Skipping corrupted content chunk: 97c27f1c-6d9e-4e69-b4ea-c672b3c7546e
+2025-10-11 12:34:06,000 - WARNING - Skipping corrupted content chunk: ba32d77a-69a3-4392-a79e-0dbeb885932b
+2025-10-11 12:34:06,001 - WARNING - Skipping corrupted content chunk: 64e2f5fd-47f9-4de6-b96b-69b5404b4292
+2025-10-11 12:34:06,001 - WARNING - Skipping corrupted content chunk: d525a7e8-293c-4dd2-abd4-feb644f9ce25
+2025-10-11 12:34:06,002 - WARNING - Skipping corrupted content chunk: af0048a0-795f-4614-8ba5-40236b3e1322
+2025-10-11 12:34:06,004 - WARNING - Skipping corrupted content chunk: 1785246b-c993-4e6e-ab46-f5a48ec10d9c
+2025-10-11 12:34:06,005 - WARNING - Skipping corrupted content chunk: 8b68cdc4-ee8d-4597-b5ee-c104b5eee65b
+2025-10-11 12:34:06,006 - WARNING - Skipping corrupted content chunk: 4bc46394-a693-4afa-a001-25e83f981ab5
+2025-10-11 12:34:06,007 - WARNING - Skipping corrupted content chunk: cd712a90-1186-4dc9-9f4b-1e4cc8b70980
+2025-10-11 12:34:06,008 - WARNING - Skipping corrupted content chunk: cb7c4cd7-f592-41d7-8f9b-198d0d641c76
+2025-10-11 12:34:06,009 - WARNING - Skipping corrupted content chunk: d2be5b5e-de19-4ad0-979b-632566154866
+2025-10-11 12:34:06,011 - WARNING - Skipping corrupted content chunk: e5c8e726-b4dc-4c23-941f-7977d804f7b6
+2025-10-11 12:34:06,014 - WARNING - Skipping corrupted content chunk: ff1b6eb1-f217-49fd-96e1-17c25834c0ab
+2025-10-11 12:34:06,015 - WARNING - Skipping corrupted content chunk: 4a86f883-6e39-4019-bfbd-f6a9b255ef14
+2025-10-11 12:34:06,016 - WARNING - Skipping corrupted content chunk: 52954196-420a-4d78-bbbb-5a184de4a9a9
+2025-10-11 12:34:06,017 - WARNING - Skipping corrupted content chunk: 68d916f2-3117-4384-93e7-cac3b25d5ede
+2025-10-11 12:34:06,017 - WARNING - Skipping corrupted content chunk: 3a30cc99-2e6b-4ac5-82a3-211b365ddd70
+2025-10-11 12:34:06,095 - INFO - Chunking validation - Quality score: 1.00, Facts preserved: 0, Facts lost: 0
+2025-10-11 12:34:06,097 - INFO - Adding processed chunks to vector store
+2025-10-11 12:34:08,384 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-10-11 12:34:09,089 - INFO - Successfully processed: fuel_comparison.json
+2025-10-11 12:34:09,089 - INFO - Content breakdown - Text: 87, Tables: 5, Images: 20
+2025-10-11 12:34:09,089 - INFO - Generated 31 final chunks for vector store
+2025-10-11 12:34:09,089 - INFO - Starting processing: Green conversion of municipal solid wastes into fuels and chemicals.extraction.json
+2025-10-11 12:34:09,091 - INFO - Processing trusted source: Green conversion of municipal solid wastes into fuels and chemicals.extraction.json
+2025-10-11 12:34:09,091 - INFO - Extracting JSON content from: Green conversion of municipal solid wastes into fuels and chemicals.extraction.json
+2025-10-11 12:34:10,524 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:10,725 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:11,567 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:11,685 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:11,746 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:13,173 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:13,213 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:13,645 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:14,533 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:14,723 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:14,872 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:15,986 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:16,489 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:16,533 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:17,426 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:17,762 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:18,747 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:19,129 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:20,137 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:22,074 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:22,536 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:23,438 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:23,551 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:24,555 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:25,807 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:26,105 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:26,333 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:27,012 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:27,897 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:28,233 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:28,323 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:29,308 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:30,116 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:30,393 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:31,134 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:32,324 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:32,377 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:32,582 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:33,153 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:33,973 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:35,241 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:35,969 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:37,946 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:37,962 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:39,181 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:40,104 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:40,373 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:40,458 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:42,151 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:42,199 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:43,800 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:44,042 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:44,593 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:44,809 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:46,046 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:47,159 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:47,210 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:47,983 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:49,127 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:49,595 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:49,881 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:51,365 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:51,691 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:51,821 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:52,614 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:53,139 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:53,207 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:55,440 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:55,637 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:56,361 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:58,389 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:58,397 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:34:59,248 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:00,685 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:00,933 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:01,919 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:02,145 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:02,575 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:02,621 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:04,406 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:05,721 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:06,005 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:06,813 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:06,878 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:08,416 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:09,247 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:09,418 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:10,585 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:10,652 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:11,192 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:12,162 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:12,230 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:12,889 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:13,230 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:13,762 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:15,271 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:16,198 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:16,655 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:17,936 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:18,072 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:19,513 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:19,884 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:20,716 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:21,161 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:21,418 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:21,427 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:23,329 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:24,116 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:24,329 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:25,504 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:25,624 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:26,924 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:27,639 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:28,382 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:28,470 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:29,703 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:30,201 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:30,324 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:31,098 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:32,037 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:32,217 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:32,645 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:33,526 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:34,523 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:34,882 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:35,426 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:35,605 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:37,059 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:37,778 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:38,226 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:40,555 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:40,624 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:41,272 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:42,668 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:42,839 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:43,400 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:44,676 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:45,078 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:46,501 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:48,060 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:48,097 - WARNING - Skipping corrupted content chunk: be5dec48-67c7-4ab0-86d4-1095d702128d
+2025-10-11 12:35:48,098 - WARNING - Skipping corrupted content chunk: 7912ebbc-738d-4082-a0a2-96f7ff56e5d3
+2025-10-11 12:35:48,099 - WARNING - Skipping corrupted content chunk: e721c0e5-0b5d-4ac9-aa57-a6d7edef5c3f
+2025-10-11 12:35:48,100 - WARNING - Skipping corrupted content chunk: 62104a39-1f7a-435a-b6ed-3ad1f0952261
+2025-10-11 12:35:48,102 - WARNING - Skipping corrupted content chunk: 8d5a196a-ecdf-4f36-a2cf-9c2607ec4cde
+2025-10-11 12:35:48,103 - WARNING - Skipping corrupted content chunk: 9ac386b3-fa4c-438f-8c37-93731fa99825
+2025-10-11 12:35:48,106 - WARNING - Skipping corrupted content chunk: b12c18fb-2122-445f-83aa-3d577a84e299
+2025-10-11 12:35:48,106 - WARNING - Skipping corrupted content chunk: 3b268213-3114-463c-917f-1665ea09ef08
+2025-10-11 12:35:48,107 - WARNING - Skipping corrupted content chunk: 6a242939-a05a-4ae3-8fc9-dbb0578a8716
+2025-10-11 12:35:48,109 - WARNING - Skipping corrupted content chunk: 66dcb567-26a9-4178-9014-0a86fa231887
+2025-10-11 12:35:48,110 - WARNING - Skipping corrupted content chunk: 1aac9c54-60b9-4428-9e5c-41a25396d18c
+2025-10-11 12:35:48,111 - WARNING - Skipping corrupted content chunk: d84cc9dd-8519-4727-82cc-dd5b99989a09
+2025-10-11 12:35:48,112 - WARNING - Skipping corrupted content chunk: bdcbb313-b7d6-4596-8eca-9b9cf8b67a9f
+2025-10-11 12:35:48,113 - WARNING - Skipping corrupted content chunk: 777ca397-cf4a-416f-93c6-2bb146b30942
+2025-10-11 12:35:48,114 - WARNING - Skipping corrupted content chunk: 15819e9c-cf62-495d-8634-43c9baa96149
+2025-10-11 12:35:48,115 - WARNING - Skipping corrupted content chunk: 7756b52b-56cf-492b-95a5-f828409955cf
+2025-10-11 12:35:48,116 - WARNING - Skipping corrupted content chunk: e90ccd0d-7542-4764-8a69-32742a6bec01
+2025-10-11 12:35:48,117 - WARNING - Skipping corrupted content chunk: 57310000-7b7a-44a5-96f2-2cbd6c438695
+2025-10-11 12:35:48,118 - WARNING - Skipping corrupted content chunk: 2e654829-f50e-4e03-be7d-ab2e25d18882
+2025-10-11 12:35:48,119 - WARNING - Skipping corrupted content chunk: b5324726-5bcf-49f6-9f5c-7bdd1998fdc4
+2025-10-11 12:35:48,120 - WARNING - Skipping corrupted content chunk: a214661b-8916-4cd9-986b-bdbd5f7699d1
+2025-10-11 12:35:48,122 - WARNING - Skipping corrupted content chunk: 3e2e731b-2cb0-464c-804d-2f06b29fb06b
+2025-10-11 12:35:48,123 - WARNING - Skipping corrupted content chunk: 69168cf2-bb29-4f2f-b75f-ec2597eb35cc
+2025-10-11 12:35:48,124 - WARNING - Skipping corrupted content chunk: d653c053-483a-48f3-b81e-479ce4499282
+2025-10-11 12:35:48,125 - WARNING - Skipping corrupted content chunk: e0a30c8e-7cd9-4627-b2de-c6220d66294e
+2025-10-11 12:35:48,126 - WARNING - Skipping corrupted content chunk: 4b05dc39-83e5-4730-a40b-f2d8e4f44d72
+2025-10-11 12:35:48,127 - WARNING - Skipping corrupted content chunk: df0df075-1e0f-4cad-b694-db5f53a8911f
+2025-10-11 12:35:48,128 - WARNING - Skipping corrupted content chunk: f342a2a5-6610-4079-94c5-18806da5dc28
+2025-10-11 12:35:48,129 - WARNING - Skipping corrupted content chunk: db64eb62-7b7d-4ea5-be91-5d5cca118e77
+2025-10-11 12:35:48,129 - WARNING - Skipping corrupted content chunk: 4c689acb-3b8f-4404-b9fa-fac7a9bd1f0b
+2025-10-11 12:35:48,134 - WARNING - Skipping corrupted content chunk: 212b8ec7-92a7-4f0c-a380-76fd10c80d0e
+2025-10-11 12:35:48,135 - WARNING - Skipping corrupted content chunk: 5db10e46-6c8d-4c89-a270-46cb9c09056b
+2025-10-11 12:35:48,144 - WARNING - Skipping corrupted content chunk: e2370aaf-e1fd-4c49-a898-d6892b5cf23a
+2025-10-11 12:35:48,145 - WARNING - Skipping corrupted content chunk: a11242fa-1542-4f34-9261-f126b4798d31
+2025-10-11 12:35:48,146 - WARNING - Skipping corrupted content chunk: b37892d1-e08b-47ff-a1a5-979abf56439f
+2025-10-11 12:35:48,146 - WARNING - Skipping corrupted content chunk: 377688dc-96ea-46e4-8bea-e1ed4be5548d
+2025-10-11 12:35:48,149 - WARNING - Skipping corrupted content chunk: 8f012677-8c83-4053-8cbd-bf39face7318
+2025-10-11 12:35:48,149 - WARNING - Skipping corrupted content chunk: 71095fc8-5536-4487-96c5-8fd48a345763
+2025-10-11 12:35:48,150 - WARNING - Skipping corrupted content chunk: 69c1c7e4-5551-4893-a124-aad072d7e7e0
+2025-10-11 12:35:48,151 - WARNING - Skipping corrupted content chunk: bfbf4b67-0453-4e5b-984a-635256b8fcee
+2025-10-11 12:35:48,152 - WARNING - Skipping corrupted content chunk: a8c06b3d-94e0-41f8-a0ec-f69efeba608d
+2025-10-11 12:35:48,153 - WARNING - Skipping corrupted content chunk: 9d13e576-a80c-4fa3-90b4-d48e0f184800
+2025-10-11 12:35:48,154 - WARNING - Skipping corrupted content chunk: 16411995-5295-495a-a9b1-903f5a07cf09
+2025-10-11 12:35:48,154 - WARNING - Skipping corrupted content chunk: 13e11cf7-9b1d-41ae-b019-b25b3d3dd114
+2025-10-11 12:35:48,155 - WARNING - Skipping corrupted content chunk: c08c7cfc-28e3-49be-b24a-43ba9d3b1c5f
+2025-10-11 12:35:48,156 - WARNING - Skipping corrupted content chunk: cd02d6b6-0a62-4d12-a424-b39a66b3bc9f
+2025-10-11 12:35:48,157 - WARNING - Skipping corrupted content chunk: a90b3016-f76f-4e65-bba0-2711b45017ed
+2025-10-11 12:35:48,157 - WARNING - Skipping corrupted content chunk: c8d1b98a-1caa-49b6-a4c0-35bef89784e8
+2025-10-11 12:35:48,159 - WARNING - Skipping corrupted content chunk: cd4832b6-ebf4-43f9-ad60-66b682132ba3
+2025-10-11 12:35:48,160 - WARNING - Skipping corrupted content chunk: 473aaf7f-deff-42f0-b174-22bd665c86ef
+2025-10-11 12:35:48,162 - WARNING - Skipping corrupted content chunk: 259967c5-f7de-44cf-bc09-21f0fbaa074c
+2025-10-11 12:35:48,162 - WARNING - Skipping corrupted content chunk: 2be96447-c8b1-442f-bf72-74f434daa96d
+2025-10-11 12:35:48,164 - WARNING - Skipping corrupted content chunk: a9c9f5a1-1b81-46e6-a845-98920cf7c7e0
+2025-10-11 12:35:48,165 - WARNING - Skipping corrupted content chunk: 009b5603-b37f-4781-bf5d-319bee99d058
+2025-10-11 12:35:48,167 - WARNING - Skipping corrupted content chunk: 2745bbde-000c-4ce2-be5d-5e84244c2e38
+2025-10-11 12:35:48,167 - WARNING - Skipping corrupted content chunk: 232fd6a6-beee-42a8-9cef-859a79fae2a8
+2025-10-11 12:35:48,168 - WARNING - Skipping corrupted content chunk: 51ef69be-944d-4efe-bf05-328c62a81550
+2025-10-11 12:35:48,169 - WARNING - Skipping corrupted content chunk: 7892be00-cb1f-4c09-a149-06cfa4ee2d94
+2025-10-11 12:35:48,171 - WARNING - Skipping corrupted content chunk: 043be6e7-484f-4818-a39c-0f50f07fdf0c
+2025-10-11 12:35:48,171 - WARNING - Skipping corrupted content chunk: d7d9c29c-ab81-4120-aee6-642f9a98edd1
+2025-10-11 12:35:48,172 - WARNING - Skipping corrupted content chunk: c82a59ec-25ba-4cd0-831c-b09ec769e035
+2025-10-11 12:35:48,177 - WARNING - Skipping corrupted content chunk: 772f4bf0-f212-4ab0-b655-1279885d75dc
+2025-10-11 12:35:48,177 - WARNING - Skipping corrupted content chunk: b2bd66d8-b7f3-4f01-a23e-e7a3d2490ea2
+2025-10-11 12:35:48,180 - WARNING - Skipping corrupted content chunk: d717d2ca-5d89-4ad5-87fa-5ece0789358f
+2025-10-11 12:35:48,181 - WARNING - Skipping corrupted content chunk: dc2cdf4b-2c24-4a1d-adb0-082f464cb194
+2025-10-11 12:35:48,183 - WARNING - Skipping corrupted content chunk: 5507b8c7-f8d3-4e3c-8d7f-0584b5b35e2a
+2025-10-11 12:35:48,195 - WARNING - Skipping corrupted content chunk: b760a55f-6168-4325-88bc-b891a26508fa
+2025-10-11 12:35:48,205 - WARNING - Skipping corrupted content chunk: 2c52db72-ef57-440b-900a-7bcf33ca2219
+2025-10-11 12:35:48,215 - WARNING - Skipping corrupted content chunk: 27fabd43-d94c-419d-9f56-ea46c46953a7
+2025-10-11 12:35:48,225 - WARNING - Skipping corrupted content chunk: dae668a9-b660-4301-8016-45b1b96be1af
+2025-10-11 12:35:48,234 - WARNING - Skipping corrupted content chunk: 5dada4ad-4a5d-4f76-83b8-e6a331b80e5f
+2025-10-11 12:35:48,243 - WARNING - Skipping corrupted content chunk: 5ec44f6e-d37d-409f-8bbe-c4cc5ad13070
+2025-10-11 12:35:48,245 - WARNING - Skipping corrupted content chunk: 5aa6060f-09ee-4f12-acaf-d1adb5a84254
+2025-10-11 12:35:48,247 - WARNING - Skipping corrupted content chunk: 1259a21d-8333-4cd3-ab3e-824e940e9b96
+2025-10-11 12:35:48,250 - WARNING - Skipping corrupted content chunk: f9e786fc-0f9e-4a37-9424-11e3d3ac1d52
+2025-10-11 12:35:48,256 - WARNING - Skipping corrupted content chunk: c8b2b18e-cc1a-4dfb-8be4-9bb7d326d9cd
+2025-10-11 12:35:48,256 - WARNING - Skipping corrupted content chunk: 974bb28a-d1a7-4887-b751-dab1e7a6f18f
+2025-10-11 12:35:48,257 - WARNING - Skipping corrupted content chunk: 978ed805-caaf-403a-9841-9eb795e44f3d
+2025-10-11 12:35:48,258 - WARNING - Skipping corrupted content chunk: 41586885-fcc6-46d9-96d4-0eba353d8e9f
+2025-10-11 12:35:48,259 - WARNING - Skipping corrupted content chunk: 60097b39-f9d8-4e34-919b-b9f167688a2d
+2025-10-11 12:35:48,261 - WARNING - Skipping corrupted content chunk: aabd7cf3-8a0c-4213-944c-ffaeaef61505
+2025-10-11 12:35:48,263 - WARNING - Skipping corrupted content chunk: 879e4228-2405-4334-b242-b8e0f15905e4
+2025-10-11 12:35:48,266 - WARNING - Skipping corrupted content chunk: 7c3e96fb-5d80-40b3-968a-652d1203c171
+2025-10-11 12:35:48,305 - INFO - Chunking validation - Quality score: 1.00, Facts preserved: 0, Facts lost: 0
+2025-10-11 12:35:48,307 - INFO - Adding processed chunks to vector store
+2025-10-11 12:35:50,232 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-10-11 12:35:51,003 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-10-11 12:35:51,115 - INFO - Successfully processed: Green conversion of municipal solid wastes into fuels and chemicals.extraction.json
+2025-10-11 12:35:51,115 - INFO - Content breakdown - Text: 129, Tables: 4, Images: 7
+2025-10-11 12:35:51,115 - INFO - Generated 42 final chunks for vector store
+2025-10-11 12:35:51,115 - INFO - Starting processing: Waste to Fuel in NY.extraction.json
+2025-10-11 12:35:51,116 - INFO - Processing trusted source: Waste to Fuel in NY.extraction.json
+2025-10-11 12:35:51,116 - INFO - Extracting JSON content from: Waste to Fuel in NY.extraction.json
+2025-10-11 12:35:52,424 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:52,492 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:53,232 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:53,842 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:54,175 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:54,874 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:55,101 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:56,293 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:56,498 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:56,896 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:57,395 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:58,022 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:58,607 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:59,166 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:59,293 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:35:59,989 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:01,367 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:01,979 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:02,992 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:03,403 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:04,431 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:04,833 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:07,788 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:07,969 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:08,791 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:09,818 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:10,072 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:10,342 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:10,781 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:11,491 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:11,821 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:12,656 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:12,760 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:13,745 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:13,750 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:13,779 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:15,047 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:15,336 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:15,489 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:16,293 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:17,573 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:18,157 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:18,693 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:19,145 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:19,574 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:19,924 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:24,935 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:25,969 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:26,022 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:26,401 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:27,049 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:27,509 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:29,773 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:30,713 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:31,882 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:33,345 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:33,621 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:34,227 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:35,678 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:35,694 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:36,652 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:37,403 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:38,195 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:39,011 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:39,219 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:40,096 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:41,800 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:42,363 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:42,953 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:43,061 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:44,569 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:45,106 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:45,343 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:47,020 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:48,934 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:49,573 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:52,073 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:53,088 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:53,141 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:55,283 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:56,694 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-11 12:36:56,735 - WARNING - Skipping corrupted content chunk: 8fdd8527-e5d7-4856-b8a3-dbb4635c7836
+2025-10-11 12:36:56,736 - WARNING - Skipping corrupted content chunk: 74d66f02-6acf-41bb-8be5-ea9ec676be63
+2025-10-11 12:36:56,739 - WARNING - Skipping corrupted content chunk: ae1a499e-5578-4c36-92ee-cc6a74f31138
+2025-10-11 12:36:56,739 - WARNING - Skipping corrupted content chunk: 7e2d15e8-ffd5-400e-a7d6-4e0cba457c25
+2025-10-11 12:36:56,740 - WARNING - Skipping corrupted content chunk: 65a92ac7-15f4-49fe-8a14-e55d127398aa
+2025-10-11 12:36:56,741 - WARNING - Skipping corrupted content chunk: 3cde3b24-aa78-4a1c-8b1f-b48fbb9fc9de
+2025-10-11 12:36:56,741 - WARNING - Skipping corrupted content chunk: be3a51ea-ea12-42fc-94e6-b694f4346cfe
+2025-10-11 12:36:56,742 - WARNING - Skipping corrupted content chunk: 0f1d3c11-2e90-4ca2-9ff2-3884f26877a2
+2025-10-11 12:36:56,743 - WARNING - Skipping corrupted content chunk: 411d3b33-d7be-4020-9e84-fceab8cd2dd9
+2025-10-11 12:36:56,744 - WARNING - Skipping corrupted content chunk: 489a1de8-101c-4381-835c-ba72b1c6c437
+2025-10-11 12:36:56,745 - WARNING - Skipping corrupted content chunk: abb7bd69-509f-41b6-8fd8-b56845303a35
+2025-10-11 12:36:56,746 - WARNING - Skipping corrupted content chunk: b66fdf72-df7c-49a3-98bc-fd93b2b9bf49
+2025-10-11 12:36:56,746 - WARNING - Skipping corrupted content chunk: 3acac29f-0257-4296-ac7a-00b0b9e10794
+2025-10-11 12:36:56,747 - WARNING - Skipping corrupted content chunk: ac2bd467-bd16-4a07-b5c0-3a0f22ce3937
+2025-10-11 12:36:56,748 - WARNING - Skipping corrupted content chunk: 97eeb7ac-1616-4785-964b-598192bc689f
+2025-10-11 12:36:56,751 - WARNING - Skipping corrupted content chunk: 9b307ee6-e86e-4dc0-9664-4f21e8d9d0cc
+2025-10-11 12:36:56,751 - WARNING - Skipping corrupted content chunk: 3cfa71f0-f9f3-4def-8604-49a684cbbe68
+2025-10-11 12:36:56,752 - WARNING - Skipping corrupted content chunk: 4588ba6f-0325-4730-92e3-86d39a2df0c2
+2025-10-11 12:36:56,754 - WARNING - Skipping corrupted content chunk: e669d09a-ecb1-42a4-bcfe-d6de81bd48bd
+2025-10-11 12:36:56,754 - WARNING - Skipping corrupted content chunk: 10d1b545-4e5f-4b2a-b797-5ba65f4595e8
+2025-10-11 12:36:56,755 - WARNING - Skipping corrupted content chunk: fd2a4270-533c-4199-9681-166ff50cbc72
+2025-10-11 12:36:56,756 - WARNING - Skipping corrupted content chunk: 67e8d87a-3f96-44c4-b90e-695b09754310
+2025-10-11 12:36:56,757 - WARNING - Skipping corrupted content chunk: 858f764b-2383-42a1-b5fe-4d39c51b9d5f
+2025-10-11 12:36:56,758 - WARNING - Skipping corrupted content chunk: edda5227-b826-4dd6-9c23-ca761dac2c47
+2025-10-11 12:36:56,759 - WARNING - Skipping corrupted content chunk: 0de66694-3a0f-4500-a054-390c3a0378a2
+2025-10-11 12:36:56,759 - WARNING - Skipping corrupted content chunk: f53b5c5c-3358-4061-87f8-1b6369b491a9
+2025-10-11 12:36:56,760 - WARNING - Skipping corrupted content chunk: 6052edb3-43af-4719-a0ba-a52bac67d969
+2025-10-11 12:36:56,761 - WARNING - Skipping corrupted content chunk: 0bc1f304-4d45-470b-a726-54b0151f47f9
+2025-10-11 12:36:56,762 - WARNING - Skipping corrupted content chunk: ba62dc64-2fab-4bbf-84fa-20c0e42d2be1
+2025-10-11 12:36:56,763 - WARNING - Skipping corrupted content chunk: 516b8206-8210-44cf-ad4b-4d0951ef8e1e
+2025-10-11 12:36:56,764 - WARNING - Skipping corrupted content chunk: 8809282e-39df-4957-a71b-74ac933de19c
+2025-10-11 12:36:56,765 - WARNING - Skipping corrupted content chunk: c3ed4b21-710f-48aa-9328-5261f870b895
+2025-10-11 12:36:56,768 - WARNING - Skipping corrupted content chunk: 3f78f9db-deb8-43c9-85e7-78fc2a2ba436
+2025-10-11 12:36:56,769 - WARNING - Skipping corrupted content chunk: 25b960b4-d130-4176-933c-484204e67029
+2025-10-11 12:36:56,771 - WARNING - Skipping corrupted content chunk: 2fece3de-c866-46d3-b7ce-7143eb760732
+2025-10-11 12:36:56,772 - WARNING - Skipping corrupted content chunk: 5021e40b-fdfb-41e9-b21e-6b66e8a1255a
+2025-10-11 12:36:56,773 - WARNING - Skipping corrupted content chunk: 91c30d3b-dace-4c1c-8925-69a835b47c71
+2025-10-11 12:36:56,774 - WARNING - Skipping corrupted content chunk: 87e6b286-c875-4228-9f29-ca4ef692d92a
+2025-10-11 12:36:56,775 - WARNING - Skipping corrupted content chunk: d5188b20-f44b-450b-ac9f-63514f425e4b
+2025-10-11 12:36:56,776 - WARNING - Skipping corrupted content chunk: c0258feb-9e89-4ad7-ba09-63a5823e4caf
+2025-10-11 12:36:56,776 - WARNING - Skipping corrupted content chunk: f6209823-f96e-4ed3-b9e9-ffdc2a7def58
+2025-10-11 12:36:56,777 - WARNING - Skipping corrupted content chunk: 6991dbcb-e2f9-4473-875b-0d18958f8570
+2025-10-11 12:36:56,778 - WARNING - Skipping corrupted content chunk: 9c92b6c4-e321-476f-8ca7-7970386172f2
+2025-10-11 12:36:56,779 - WARNING - Skipping corrupted content chunk: db78b48b-7836-4fe0-bf07-0a6103c79b90
+2025-10-11 12:36:56,780 - WARNING - Skipping corrupted content chunk: 347ba7e8-4161-4768-b457-e4c4f3c06917
+2025-10-11 12:36:56,780 - WARNING - Skipping corrupted content chunk: 40866a0f-1e50-409b-b3fc-dd006dae75fe
+2025-10-11 12:36:56,781 - WARNING - Skipping corrupted content chunk: b7a8007a-ef6c-4655-8ec2-aefaa259c85a
+2025-10-11 12:36:56,782 - WARNING - Skipping corrupted content chunk: 22932c08-ca45-4b9d-93c0-562aac329fcf
+2025-10-11 12:36:56,783 - WARNING - Skipping corrupted content chunk: af5958b9-85cd-4630-b821-d863c858fcda
+2025-10-11 12:36:56,784 - WARNING - Skipping corrupted content chunk: ed0a4249-6f11-41c7-bbf0-14cf1592930e
+2025-10-11 12:36:56,785 - WARNING - Skipping corrupted content chunk: ebe73307-a7c2-4fc9-b38e-b8e530d56e4b
+2025-10-11 12:36:56,786 - WARNING - Skipping corrupted content chunk: 57a498bf-60be-4018-9455-6ef2722b66da
+2025-10-11 12:36:56,810 - INFO - Chunking validation - Quality score: 1.00, Facts preserved: 1, Facts lost: 0
+2025-10-11 12:36:56,811 - INFO - Adding processed chunks to vector store
+2025-10-11 12:36:58,616 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-10-11 12:36:59,022 - INFO - Successfully processed: Waste to Fuel in NY.extraction.json
+2025-10-11 12:36:59,022 - INFO - Content breakdown - Text: 66, Tables: 1, Images: 14
+2025-10-11 12:36:59,022 - INFO - Generated 30 final chunks for vector store
+2025-10-11 12:36:59,022 - INFO - === Pipeline Completion Summary ===
+2025-10-11 12:36:59,022 - INFO - Total files found: 8
+2025-10-11 12:36:59,022 - INFO - Successfully processed: 8
+2025-10-11 12:36:59,022 - INFO - Failed processing: 0
+2025-10-11 12:36:59,023 - INFO - Previously processed: 0

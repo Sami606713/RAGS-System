@@ -1,82 +1,364 @@
 import os
-import shutil
-from utils.helper import LoadAndExtractData
+import sys
+import logging
+from datetime import datetime
+from pathlib import Path
+
+from utils.helper import LoadAndExtractData, LoadAndExtractDataFromJSON
 from summerizer.summarizer import summarize_text, summarize_image
 from langchain_core.documents import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_experimental.text_splitter import SemanticChunker
 from vectorStore.vectorStore import add_to_vector_store,get_embeddings
+from utils.sourceValidator import get_source_validator
+from utils.contentAnalyzer import create_content_analyzer
+from utils.factPreservingChunker import create_fact_preserving_chunker
+
+# Enhanced logging setup for better pipeline monitoring
+def setup_logging():
+    """Setup comprehensive logging for the article processing pipeline"""
+    log_dir = Path("logs")
+    log_dir.mkdir(exist_ok=True)
+
+    log_file = log_dir / f"pipeline_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler(log_file, encoding='utf-8'),
+            logging.StreamHandler(sys.stdout)
+        ]
+    )
+
+    return logging.getLogger(__name__)
 
 def main():
+    """Enhanced article processing pipeline with comprehensive logging and error handling"""
+    logger = setup_logging()
+
     try:
         root_dir = "docs"
-        processed_log_path = "processFile3.txt"
+        processed_log_path = "processed.txt"
+
+        logger.info("=== Starting Enhanced Article Processing Pipeline ===")
+        logger.info(f"Processing directory: {root_dir}")
+
+        # Initialize source validator and auto-register docs directory
+        logger.info("Initializing source validation...")
+        source_validator = get_source_validator()
+        registered_count = source_validator.auto_register_docs_directory()
+
+        if registered_count == 0:
+            logger.warning("No documents found in docs directory or all failed to register")
+            print("WARNING: No documents found in docs directory or all failed to register")
+            return
+
+        logger.info(f"Successfully registered {registered_count} trusted sources")
+        print(f">> Registered {registered_count} trusted sources")
 
         # Load already processed file names
+        logger.info(f"Loading processed files log from: {processed_log_path}")
         if os.path.exists(processed_log_path):
-            with open(processed_log_path, 'r') as f:
+            with open(processed_log_path, 'r', encoding='utf-8') as f:
                 processed_files = set(f.read().splitlines())
+            logger.info(f"Found {len(processed_files)} previously processed files")
         else:
             processed_files = set()
+            logger.info("No previous processing log found, starting fresh")
 
         files = os.listdir(root_dir)
+        logger.info(f"Found {len(files)} files in {root_dir}: {files}")
+        logger.info(f"Previously processed: {len(processed_files)} files")
+
         print(">> Files: ", files)
         print(">> Process Files: ", processed_files)
         print(">> Processing Files ")
+        successful_processing = 0
+        failed_processing = 0
+
         for file in files:
             file_path = os.path.join(root_dir, file)
 
-            # Only process files that don't exist in the process directory
-            if file not in processed_files and file.lower().endswith('.pdf'):
-                print(f">> Processing: {file}")
+            try:
+                # Only process files that don't exist in the process directory
+                if file not in processed_files and file.lower().endswith(('.pdf', '.json')):
+                    logger.info(f"Starting processing: {file}")
 
-                tables, texts, images = LoadAndExtractData(file_path)
+                    # Verify source is trusted before processing
+                    if not source_validator.is_trusted_source(file_path):
+                        logger.warning(f"Skipping untrusted source: {file}")
+                        print(f">> SKIPPING untrusted source: {file}")
+                        print(f"   Use source validator to register: {file_path}")
+                        continue
 
-                print(">> Generating Summaries ")
-                text_summary = summarize_text(data=texts)
-                tables_summary = summarize_text(data=tables)
-                images_summary = summarize_image(data=images)
+                    logger.info(f"Processing trusted source: {file}")
+                    print(f">> Processing trusted source: {file}")
 
-                print("Text Summary: ", text_summary)
-                print("Table Summary: ", tables_summary)
-                print("Image Summary: ", images_summary)
+                    # Choose extraction method based on file type
+                    if file.lower().endswith('.pdf'):
+                        logger.info(f"Extracting PDF content from: {file}")
+                        tables, texts, images = LoadAndExtractData(file_path)
+                    else:  # JSON file
+                        logger.info(f"Extracting JSON content from: {file}")
+                        tables, texts, images = LoadAndExtractDataFromJSON(file_path)
 
-                print(">> Summary Generated")
-                print(">> Combine Each and every thing into one document")
+                    if not any([tables, texts, images]):
+                        logger.warning(f"No content extracted from {file}")
+                        continue
 
-                text_docs = [Document(page_content=str(text), metadata={"type": "text", "summary": text_summary[i], "source": file_path, "name": file}) for i, text in enumerate(texts)]
-                table_docs = [Document(page_content=tables[i], metadata={"type": "table", "summary": tables_summary[i], "source": file_path, "name": file}) for i, table in enumerate(tables)]
-                image_docs = [Document(page_content=images[i], metadata={"type": "image", "summary": images_summary[i], "source": file_path, "name": file}) for i, image in enumerate(images)]
+                    print(">> Processing content for enhanced retrieval")
 
-                docs = text_docs + table_docs + image_docs
+                    # Enhanced content processing for structured data
+                    all_content = []
 
-                print(">> Splitting Documents")
-                # document_splitter = RecursiveCharacterTextSplitter(
-                #     chunk_size=1000,
-                #     chunk_overlap=200,
-                #     length_function=len,
-                #     is_separator_regex=False,
-                # )
+                    # Process text content with enhanced metadata
+                    for text_item in texts:
+                        if isinstance(text_item, dict):
+                            content = text_item['content']
+                            metadata = {
+                                "type": "text",
+                                "chunk_id": text_item.get('chunk_id', ''),
+                                "semantic_type": text_item.get('semantic_type', 'content'),
+                                "source": file_path,
+                                "source_file": text_item.get('source_file', file),
+                                "header": text_item.get('header', ''),
+                                "header_level": text_item.get('header_level', 0)
+                            }
+                        else:
+                            content = str(text_item)
+                            metadata = {"type": "text", "source": file_path, "source_file": file}
 
-                document_splitter = SemanticChunker(
-                    get_embeddings(), breakpoint_threshold_type="gradient",
-                    number_of_chunks=100,
-                    
-                )
+                        all_content.append(content)
 
-                docs_chunks = document_splitter.split_documents(docs)
-                print(">> Splitting Done")
-                add_to_vector_store(docs_chunks=docs_chunks)
+                    # Process table content
+                    for table_item in tables:
+                        if isinstance(table_item, dict):
+                            content = table_item['content']
+                            metadata = {
+                                "type": "table",
+                                "chunk_id": table_item.get('chunk_id', ''),
+                                "source": file_path,
+                                "source_file": table_item.get('source_file', file)
+                            }
+                        else:
+                            content = str(table_item)
+                            metadata = {"type": "table", "source": file_path, "source_file": file}
 
-                with open(processed_log_path, 'a') as f:
-                    f.write(file + '\n')
+                        all_content.append(content)
 
-                print(f">> Marked {file} as processed")
-            else:
-                print(f"!! Skipping already processed or unsupported file: {file}")
+                    # Process image content
+                    for image_item in images:
+                        if isinstance(image_item, dict):
+                            content = image_item['content']
+                            metadata = {
+                                "type": "image",
+                                "chunk_id": image_item.get('chunk_id', ''),
+                                "source": file_path,
+                                "source_file": image_item.get('source_file', file)
+                            }
+                        else:
+                            content = str(image_item)
+                            metadata = {"type": "image", "source": file_path, "source_file": file}
+
+                        all_content.append(content)
+
+                    # Generate summaries more efficiently
+                    print(">> Generating content summaries")
+                    if all_content:
+                        try:
+                            content_summaries = summarize_text(data=all_content)
+                            print(f">> Generated {len(content_summaries)} summaries")
+                        except Exception as e:
+                            print(f">> Warning: Summary generation failed: {e}")
+                            content_summaries = ["" for _ in all_content]
+                    else:
+                        content_summaries = []
+
+                    # Create enhanced documents with better metadata
+                    print(">> Creating enhanced document structure")
+                    docs = []
+                    summary_idx = 0
+
+                    for text_item in texts:
+                        if isinstance(text_item, dict):
+                            content = text_item['content']
+                            metadata = {
+                                "type": "text",
+                                "chunk_id": text_item.get('chunk_id', f"text_{len(docs)}"),
+                                "semantic_type": text_item.get('semantic_type', 'content'),
+                                "source": file_path,
+                                "source_file": text_item.get('source_file', file),
+                                "header": text_item.get('header', ''),
+                                "header_level": text_item.get('header_level', 0),
+                                "summary": content_summaries[summary_idx] if summary_idx < len(content_summaries) else ""
+                            }
+                        else:
+                            content = str(text_item)
+                            metadata = {
+                                "type": "text",
+                                "source": file_path,
+                                "source_file": file,
+                                "summary": content_summaries[summary_idx] if summary_idx < len(content_summaries) else ""
+                            }
+
+                        docs.append(Document(page_content=content, metadata=metadata))
+                        summary_idx += 1
+
+                    for table_item in tables:
+                        if isinstance(table_item, dict):
+                            content = table_item['content']
+                            metadata = {
+                                "type": "table",
+                                "chunk_id": table_item.get('chunk_id', f"table_{len([d for d in docs if d.metadata.get('type') == 'table'])}"),
+                                "source": file_path,
+                                "source_file": table_item.get('source_file', file),
+                                "summary": content_summaries[summary_idx] if summary_idx < len(content_summaries) else ""
+                            }
+                        else:
+                            content = str(table_item)
+                            metadata = {
+                                "type": "table",
+                                "source": file_path,
+                                "source_file": file,
+                                "summary": content_summaries[summary_idx] if summary_idx < len(content_summaries) else ""
+                            }
+
+                        docs.append(Document(page_content=content, metadata=metadata))
+                        summary_idx += 1
+
+                    for image_item in images:
+                        if isinstance(image_item, dict):
+                            content = image_item['content']
+                            metadata = {
+                                "type": "image",
+                                "chunk_id": image_item.get('chunk_id', f"image_{len([d for d in docs if d.metadata.get('type') == 'image'])}"),
+                                "source": file_path,
+                                "source_file": image_item.get('source_file', file),
+                                "summary": content_summaries[summary_idx] if summary_idx < len(content_summaries) else ""
+                            }
+                        else:
+                            content = str(image_item)
+                            metadata = {
+                                "type": "image",
+                                "source": file_path,
+                                "source_file": file,
+                                "summary": content_summaries[summary_idx] if summary_idx < len(content_summaries) else ""
+                            }
+
+                        docs.append(Document(page_content=content, metadata=metadata))
+                        summary_idx += 1
+
+                    print(">> Applying advanced content analysis and fact-preserving chunking")
+
+                    # Initialize content analyzer for quality control
+                    content_analyzer = create_content_analyzer()
+
+                    # Analyze and enhance documents with content intelligence
+                    enhanced_docs = []
+                    for doc in docs:
+                        # Analyze content quality and extract intelligence
+                        analysis = content_analyzer.analyze_content(doc.page_content, doc.metadata)
+
+                        # Skip corrupted content
+                        if analysis.quality_score.value == 'corrupted':
+                            logger.warning(f"Skipping corrupted content chunk: {doc.metadata.get('chunk_id', 'unknown')}")
+                            continue
+
+                        # Enhance metadata with analysis results
+                        enhanced_metadata = doc.metadata.copy()
+                        enhanced_metadata.update({
+                            'intent_category': analysis.intent_category.value,
+                            'quality_score': analysis.quality_score.value,
+                            'confidence_score': analysis.confidence_score,
+                            'numeric_facts_count': len(analysis.numeric_facts),
+                            'issues_found': analysis.issues_found,
+                            'cleaned_content': analysis.cleaned_content
+                        })
+
+                        # Use cleaned content for better processing
+                        enhanced_doc = Document(
+                            page_content=analysis.cleaned_content,
+                            metadata=enhanced_metadata
+                        )
+                        enhanced_docs.append(enhanced_doc)
+
+                    if not enhanced_docs:
+                        logger.warning(f"No valid content after quality analysis for {file}")
+                        continue
+
+                    # Use fact-preserving chunking to maintain important information integrity
+                    fact_chunker = create_fact_preserving_chunker(
+                        chunk_size=1200,  # Optimized for articles
+                        chunk_overlap=200  # Preserve context
+                    )
+
+                    docs_chunks = fact_chunker.split_documents(enhanced_docs)
+
+                    # Validate chunking quality
+                    chunking_validation = fact_chunker.validate_chunking_quality(enhanced_docs, docs_chunks)
+                    logger.info(f"Chunking validation - Quality score: {chunking_validation['quality_score']:.2f}, "
+                              f"Facts preserved: {chunking_validation['facts_preserved']}, "
+                              f"Facts lost: {chunking_validation['facts_lost']}")
+
+                    # Enhanced logging for better pipeline monitoring
+                    print(f">> Document splitting completed:")
+                    print(f"   - Original documents: {len(docs)}")
+                    print(f"   - Final chunks: {len(docs_chunks)}")
+                    print(f"   - Average chunk size: {sum(len(chunk.page_content) for chunk in docs_chunks) // len(docs_chunks) if docs_chunks else 0} chars")
+
+                    # Add enhanced metadata to chunks
+                    for i, chunk in enumerate(docs_chunks):
+                        chunk.metadata.update({
+                            "chunk_index": i,
+                            "total_chunks": len(docs_chunks),
+                            "processed_date": str(os.path.getmtime(file_path)),
+                            "file_name": file
+                        })
+
+                    logger.info("Adding processed chunks to vector store")
+                    print(">> Adding to vector store with enhanced metadata")
+                    add_to_vector_store(docs_chunks=docs_chunks)
+
+                    # Update processed files log - write only once per file
+                    with open(processed_log_path, 'a', encoding='utf-8') as f:
+                        f.write(file + '\n')
+
+                    successful_processing += 1
+                    logger.info(f"Successfully processed: {file}")
+                    logger.info(f"Content breakdown - Text: {len(texts)}, Tables: {len(tables)}, Images: {len(images)}")
+                    logger.info(f"Generated {len(docs_chunks)} final chunks for vector store")
+
+                    print(f">> Successfully processed and stored: {file}")
+                    print(f"   - Content types: Text({len(texts)}), Tables({len(tables)}), Images({len(images)})")
+                    print(f"   - Final vector store chunks: {len(docs_chunks)}")
+
+                else:
+                    logger.info(f"Skipping already processed or unsupported file: {file}")
+                    print(f"!! Skipping already processed or unsupported file: {file}")
+
+            except Exception as file_error:
+                failed_processing += 1
+                logger.error(f"Failed to process {file}: {str(file_error)}", exc_info=True)
+                print(f"!! Error processing {file}: {str(file_error)}")
+
+        # Final pipeline summary
+        total_files = len([f for f in files if f.lower().endswith(('.pdf', '.json'))])
+        logger.info("=== Pipeline Completion Summary ===")
+        logger.info(f"Total files found: {total_files}")
+        logger.info(f"Successfully processed: {successful_processing}")
+        logger.info(f"Failed processing: {failed_processing}")
+        logger.info(f"Previously processed: {len(processed_files)}")
+
+        print("\n=== Pipeline Summary ===")
+        print(f"Total files: {total_files}")
+        print(f"Successfully processed: {successful_processing}")
+        print(f"Failed: {failed_processing}")
+        print(f"Previously processed: {len(processed_files)}")
 
     except Exception as e:
-        print("Error is:", str(e))
+        logger.error(f"Critical pipeline error: {str(e)}", exc_info=True)
+        print("Critical Error:", str(e))
         return str(e)
 
 if __name__ == "__main__":
