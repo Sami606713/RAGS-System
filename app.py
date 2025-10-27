@@ -36,7 +36,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # Chat input
-user_input = st.chat_input("Ask something about your document...")
+# user_input = st.chat
 
 if user_input:
     # Save user message

@@ -22,6 +22,6 @@ faiss-cpu
 scikit-learn
 agno
 python-dotenv
-streamlit
+streamlit>=1.24.0
 cohere==5.15.0
 langgraph>=0.1.6
